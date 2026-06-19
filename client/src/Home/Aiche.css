@@ -1,0 +1,86 @@
+
+
+.aiche-section {
+  margin-bottom: 80px;
+}
+.aiche-cards-wrapper {
+  position: relative;
+  margin: 0 calc(-50vw + 50%); 
+  width: 100vw;
+  height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--surface-bg);
+}
+
+.aiche-card {
+  position: absolute;
+  height: 80vh; 
+  width: calc(100% - 40px); 
+  max-width: none; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-color: #1f1f1f; 
+  color: #ffffff; 
+  border-radius: 32px;
+  padding: 80px 60px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.aiche-card.card-1 {
+  z-index: 1;
+}
+
+.aiche-card.card-2 {
+  z-index: 2;
+}
+
+.aiche-card-content {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.aiche-card-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.aiche-card p {
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.6;
+  opacity: 0.8;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #fffef5;
+}
+
+@media (max-width: 768px) {
+  .aiche-cards-wrapper {
+    height: 80vh;
+  }
+  .aiche-card {
+    height: 70vh;
+    padding: 60px 24px;
+    border-radius: 20px;
+  }
+  .aiche-card-title {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+  .aiche-card p {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+}

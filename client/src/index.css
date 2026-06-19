@@ -10,14 +10,11 @@
   --primary-glow-strong: rgba(197, 90, 17, 0.32);
   --secondary-glow: rgba(212, 212, 212, 0.05);
 
-
   --text-primary: #050505;
   --text-secondary: #1C1C1C;
 
-
   --surface-bg: #d9d6cd;
   --surface-glass: rgba(243, 239, 230, 0.871);
-
 
   --border-light: rgba(0, 0, 0, 0.08);
   --border-medium: rgba(0, 0, 0, 0.13);
@@ -96,7 +93,6 @@ p {
 a {
   font-family: 'Raleway', sans-serif;
 }
-
 
 ::-webkit-scrollbar {
   display: none;

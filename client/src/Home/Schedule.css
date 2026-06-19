@@ -1,0 +1,147 @@
+
+.schedule-section {
+  margin-bottom: 120px;
+}
+
+.schedule-header {
+  margin-bottom: 40px;
+}
+
+.schedule-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.magazine-spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #FAF8F2; 
+  border-top: 2px solid var(--text-primary);
+  border-bottom: 2px solid var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.magazine-spread::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.05));
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.magazine-page {
+  padding: 80px 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-right {
+  border-left: 1px solid rgba(0,0,0,0.05);
+}
+
+.day-header {
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.day-number {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 0.8;
+  color: var(--text-primary);
+  letter-spacing: -4px;
+}
+
+.day-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FF6B00; 
+  margin-top: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 16px;
+}
+
+.schedule-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FF6B00; 
+}
+
+.schedule-event {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@media (max-width: 1100px) {
+  .day-number {
+    font-size: 6rem;
+  }
+  .magazine-page {
+    padding: 60px 5%;
+  }
+}
+
+@media (max-width: 800px) {
+  .magazine-spread {
+    grid-template-columns: 1fr;
+  }
+  .magazine-spread::after {
+    display: none;
+  }
+  .magazine-page {
+    padding: 60px 5vw;
+  }
+  .page-right {
+    border-left: none;
+    border-top: 2px dashed rgba(0,0,0,0.1);
+  }
+  .day-number {
+    font-size: 5rem;
+  }
+  .schedule-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 500px) {
+  .magazine-page {
+    padding: 40px 5vw;
+  }
+  .day-number {
+    font-size: 4rem;
+  }
+  .schedule-time {
+    font-size: 0.85rem;
+  }
+  .schedule-event {
+    font-size: 1.1rem;
+  }
+}

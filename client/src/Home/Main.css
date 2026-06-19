@@ -1,0 +1,12 @@
+.home-container {
+  padding: 0 4vw;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .banner-content {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+}

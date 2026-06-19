@@ -1,4 +1,4 @@
-/* Navbar.css*/
+
 
 .navbar {
   position: fixed;
@@ -86,7 +86,6 @@
   font-weight: 800;
 }
 
-
 .nav-menu {
   display: flex;
   list-style: none;
@@ -115,16 +114,13 @@
   display: block;
 }
 
-
-
-
 .mobile-menu-icon {
   display: none;
   flex-direction: column;
-  gap: 7px;
+  gap: 4px; 
   cursor: pointer;
   z-index: 1001;
-  padding: 6px;
+  padding: 6px; 
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   background: transparent;
   border: none;
@@ -132,11 +128,11 @@
 }
 
 .mobile-menu-icon span {
-  width: 28px;
-  height: 2.5px;
+  width: 18px; 
+  height: 1.5px; 
   background: var(--text-primary);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 1.5px;
+  border-radius: 1px;
   display: block;
 }
 
@@ -145,20 +141,19 @@
 }
 
 .mobile-menu-icon.open span:nth-child(1) {
-  transform: translateY(9.5px) rotate(45deg);
+  transform: translateY(5.5px) rotate(45deg); 
   background: var(--primary);
 }
 
 .mobile-menu-icon.open span:nth-child(2) {
   opacity: 0;
-  transform: translateX(24px);
+  transform: translateX(12px);
 }
 
 .mobile-menu-icon.open span:nth-child(3) {
-  transform: translateY(-9.5px) rotate(-45deg);
+  transform: translateY(-5.5px) rotate(-45deg); 
   background: var(--primary);
 }
-
 
 .mobile-nav-overlay {
   display: none;
@@ -167,18 +162,19 @@
 @media (max-width: 860px) {
   .navbar {
     top: 24px;
-    right: 24px;
-    left: auto;
+    left: 24px; 
+    right: auto;
     margin: 0;
     width: auto;
-    padding: 12px;
-    border-radius: 14px;
+    padding: 8px; 
+    border-radius: 10px;
   }
 
   .navbar.scrolled {
     top: 16px;
-    right: 16px;
-    padding: 10px;
+    left: 16px; 
+    right: auto;
+    padding: 6px; 
   }
 
   .nav-container {
@@ -196,7 +192,7 @@
     inset: 0;
     width: 100vw;
     height: 100dvh;
-    background: rgba(243, 239, 230, 0.96); /* Solidified background */
+    background: rgba(243, 239, 230, 0.96); 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     flex-direction: column;

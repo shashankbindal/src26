@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
+  const textRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!textRef.current) return;
+    const rect = textRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    textRef.current.style.setProperty('--mouse-x', `${x}px`);
+    textRef.current.style.setProperty('--mouse-y', `${y}px`);
+  };
+
   return (
     <footer className="footer">
       <div className="footer-card">
@@ -46,7 +57,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="footer-giant-text">
+        <div 
+          className="footer-giant-text"
+          ref={textRef}
+          onMouseMove={handleMouseMove}
+        >
           VIPLAV
         </div>
       </div>

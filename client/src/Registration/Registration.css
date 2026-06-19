@@ -1,0 +1,41 @@
+.reg-simple-container {
+  min-height: calc(100vh - 100px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.reg-simple-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.reg-simple-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.reg-simple-btn {
+  background: transparent;
+  border: 1px solid var(--border-dark);
+  color: var(--text-primary);
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reg-simple-btn:hover {
+  background: var(--text-primary);
+  color: var(--surface-bg);
+}

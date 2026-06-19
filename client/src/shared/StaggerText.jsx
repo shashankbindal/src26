@@ -1,69 +1,109 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, forwardRef, useImperativeHandle } from "react";
 import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
 
-const StaggerText = ({ text, hoverColor = "inherit" }) => {
-  const originalChars = useRef([]);
-  const hoverChars = useRef([]);
+gsap.registerPlugin(SplitText, useGSAP);
+
+const StaggerText = forwardRef(({ 
+  text, 
+  hoverColor = "inherit",
+  duration = 0.3,
+  stagger = 0.02,
+  ease = "power2.inOut",
+  className = ""
+}, ref) => {
+  const originalRef = useRef(null);
+  const hoverRef = useRef(null);
   const wrapperRef = useRef(null);
+  const tlRef = useRef(null);
 
-  useEffect(() => {
+  useImperativeHandle(ref, () => ({
+    play: () => tlRef.current?.play(),
+    reverse: () => tlRef.current?.reverse(),
+    reset: () => tlRef.current?.pause(0),
+  }));
+
+  useGSAP(() => {
     const parent = wrapperRef.current?.parentElement;
-    
-    const animate = (yPercent) => {
-
-      gsap.to(originalChars.current, { yPercent, stagger: 0.02, duration: 0.3, ease: "power2.inOut", overwrite: true });
-      gsap.to(hoverChars.current, { yPercent, stagger: 0.02, duration: 0.3, ease: "power2.inOut", overwrite: true });
-    };
-
-    const handleEnter = () => animate(-100);
-    const handleLeave = () => animate(0);
-
     const target = parent || wrapperRef.current;
+
+    const splitOriginal = new SplitText(originalRef.current, { type: "chars" });
+    const splitHover = new SplitText(hoverRef.current, { type: "chars" });
+
+    tlRef.current = gsap.timeline({
+      paused: true,
+    });
+
+    tlRef.current
+      .to(splitOriginal.chars, {
+        yPercent: -100,
+        duration: duration,
+        ease: ease,
+        stagger: {
+          each: stagger,
+          from: "start"
+        }
+      }, 0)
+      .to(splitHover.chars, {
+        yPercent: -100,
+        duration: duration,
+        ease: ease,
+        stagger: {
+          each: stagger,
+          from: "start"
+        }
+      }, 0);
+
+    const handleEnter = () => tlRef.current?.play();
+    const handleLeave = () => tlRef.current?.reverse();
+
     if (target) {
       target.addEventListener("mouseenter", handleEnter);
       target.addEventListener("mouseleave", handleLeave);
-      return () => {
+    }
+
+    return () => {
+      if (target) {
         target.removeEventListener("mouseenter", handleEnter);
         target.removeEventListener("mouseleave", handleLeave);
-      };
-    }
-  }, []);
-
-  const textArray = typeof text === "string" ? text.split("") : [];
-
-  const renderChars = (refArray) =>
-    textArray.map((char, index) => (
-      <span
-        key={index}
-        ref={(el) => (refArray.current[index] = el)}
-        style={{ display: "inline-block", whiteSpace: "pre" }}
-      >
-        {char}
-      </span>
-    ));
+      }
+      tlRef.current?.kill();
+      splitOriginal.revert();
+      splitHover.revert();
+    };
+  }, {
+    scope: wrapperRef,
+    dependencies: [text, hoverColor, duration, stagger, ease]
+  });
 
   return (
     <div
       ref={wrapperRef}
+      className={className}
       style={{ position: "relative", overflow: "hidden", display: "flex" }}
     >
-      <div style={{ display: "flex" }}>
-        {renderChars(originalChars)}
+      <div ref={originalRef} style={{ display: "block", whiteSpace: "pre" }}>
+        {text}
       </div>
 
       <div
+        ref={hoverRef}
         style={{
           position: "absolute",
           left: 0,
           top: "100%",
-          display: "flex",
+          display: "block",
+          whiteSpace: "pre",
           color: hoverColor,
         }}
       >
-        {renderChars(hoverChars)}
+        {text}
       </div>
     </div>
   );
-};
+});
+
+StaggerText.displayName = "StaggerText";
 
 export default StaggerText;

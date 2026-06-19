@@ -28,7 +28,6 @@
 .dot-bl { bottom: 24px; left: 24px; }
 .dot-br { bottom: 24px; right: 24px; }
 
-
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -125,17 +124,31 @@
 }
 
 .footer-giant-text {
-  font-size: 24vw;
+  font-size: 18vw;
   font-weight: 800;
   text-align: center;
-  line-height: 0.75;
+  line-height: 1;
   color: var(--text-secondary);
   margin-top: auto;
   user-select: none;
   z-index: 1;
-  letter-spacing: -1vw;
+  letter-spacing: 1vw;
   text-transform: lowercase;
-  transform: translateY(6%);
+  transform: translateY(0);
+  padding-bottom: 2vw;
+
+  background-image: radial-gradient(
+    circle 250px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--primary-dark) 0%,
+    var(--text-secondary) 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: color 0.4s ease;
+}
+
+.footer-giant-text:hover {
+  color: transparent;
 }
 
 @media (max-width: 900px) {
@@ -143,7 +156,7 @@
     padding: 60px 40px 0 40px;
   }
   .footer-giant-text {
-    font-size: 26vw;
+    font-size: 20vw;
   }
 }
 

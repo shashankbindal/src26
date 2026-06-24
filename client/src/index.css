@@ -14,8 +14,9 @@
   --text-secondary: #585858;
   --text-card: #F8F6F2;
 
-  --surface-bg: #E9DFC5;
-  --surface-glass: rgba(233, 223, 197, 0.871);
+  --surface-bg: #F6F2E8; /* Lighter, soft cream turmeric */
+  --surface-bg-dark: #E9DFC5; /* Original turmeric yellow */
+  --surface-glass: rgba(246, 242, 232, 0.87);
   --surface-card: #1D1D1D;
   --surface-bento: #22201D;
 

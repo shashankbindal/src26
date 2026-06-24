@@ -12,12 +12,15 @@ import Sponsor from "./Sponsors/Sponsor.jsx";
 import SmoothScroller from "./shared/SmoothScroller.jsx";
 import TeamProfile from "./TeamProfile/TeamProfile.jsx";
 
+import ScrollToTop from "./shared/ScrollToTop.jsx";
+
 const AppContent = () => {
   const location = useLocation();
   const hideNavFooter = location.pathname.startsWith('/team-profile');
 
   return (
     <SmoothScroller>
+      <ScrollToTop />
       {!hideNavFooter && <Navbar />}
       <main style={{ flex: 1 }}>
         <Routes>

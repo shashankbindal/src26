@@ -20,6 +20,8 @@ export const useLenis = () => {
       infinite: false,
     });
 
+    window.lenis = lenis;
+
     lenis.on('scroll', ScrollTrigger.update);
 
     const update = (time) => {
@@ -33,6 +35,7 @@ export const useLenis = () => {
     return () => {
       
       lenis.destroy();
+      window.lenis = null;
       gsap.ticker.remove(update);
     };
   }, []);

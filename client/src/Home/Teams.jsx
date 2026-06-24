@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { bentoCards } from './teamsData'
+import { bentoCards } from '../TeamProfile/teamsData'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Teams.css'
@@ -20,20 +20,19 @@ const Teams = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "center center",
-          end: () => `+=${row.scrollWidth}`, // The scroll distance equals the width of the row
+          end: () => `+=${row.scrollWidth}`,
           scrub: 1,
           pin: true,
         }
       });
 
       tl.to(row, {
-        x: () => -(row.scrollWidth - window.innerWidth + 100), // Stop when the end is reached
+        x: () => -(row.scrollWidth - window.innerWidth + 100),
         ease: "none",
       });
 
     }, sectionRef);
 
-    // Refresh ScrollTrigger on resize or after fonts load
     const timeout = setTimeout(() => ScrollTrigger.refresh(), 500);
     return () => {
       clearTimeout(timeout);
@@ -53,7 +52,7 @@ const Teams = () => {
           {bentoCards.map((card, index) => {
             const num = (index + 1).toString().padStart(2, '0');
             return (
-              <div key={card.id} className="carousel-card">
+              <div key={card.id} className="carousel-card" style={{ '--team-color': card.color || 'var(--primary)' }}>
                 <div className="carousel-card-number">{num}</div>
                 <div className="carousel-card-inner">
                   <h3 className="carousel-team-name">{card.name}</h3>

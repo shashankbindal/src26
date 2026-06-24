@@ -1,0 +1,259 @@
+.team-page-container {
+  min-height: 100vh;
+  padding: 140px 5% 100px;
+  background-color: var(--surface-bg);
+  color: var(--text-primary);
+  font-family: 'Raleway', sans-serif;
+}
+
+.team-page-header {
+  text-align: center;
+  margin-bottom: 120px;
+  position: relative;
+}
+
+.team-page-title {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.team-page-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.teams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 160px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.team-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.team-group-name {
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 80px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: -1px;
+  position: relative;
+}
+
+/* Premium minimalist accent line */
+.team-group-name::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--team-color);
+  border-radius: 2px;
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--team-color) 20%, transparent);
+}
+
+.team-hierarchy {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  width: 100%;
+}
+
+.mobile-break {
+  display: none;
+}
+
+.hierarchy-level {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.member-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 250px;
+  gap: 25px;
+  cursor: pointer;
+}
+
+.member-card:hover .member-image-placeholder {
+  transform: translateY(-10px);
+  border-color: rgba(0, 0, 0, 0.08);
+  background: var(--text-card); /* Pops elegantly on the beige background */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 10px 20px color-mix(in srgb, var(--team-color) 15%, transparent);
+}
+
+.member-card:hover .member-image-placeholder::before {
+  opacity: 1;
+}
+
+.member-image-placeholder {
+  width: 250px;
+  height: 330px;
+  background: rgba(255, 255, 255, 0.4); /* Slight frosted glass look on the beige background */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 6px; /* Editorial crisp edges */
+}
+
+/* Soft inner glow using team color on hover */
+.member-image-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--team-color) 8%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 0;
+}
+
+.member-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: grayscale(100%) contrast(1.05);
+  transition: filter 0.6s ease, transform 0.6s ease;
+}
+
+.member-card:hover .member-image {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.04);
+}
+
+/* Elegant placeholder for missing images */
+.member-image-placeholder:not(:has(.member-image))::after {
+  content: 'IMAGE PENDING';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 3px;
+  z-index: 2;
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.member-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.member-role {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--team-color);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Vertical elegant separator instead of full width lines */
+.team-divider {
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, var(--border-dark), transparent);
+  margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .team-page-container {
+    padding: 100px 5% 60px;
+  }
+  
+  .team-page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .teams-list {
+    gap: 100px;
+  }
+  
+  .team-group-name {
+    margin-bottom: 50px;
+  }
+  
+  .team-hierarchy {
+    gap: 50px;
+  }
+  
+  .hierarchy-level {
+    gap: 30px;
+  }
+  
+  .chair-card {
+    order: 1;
+  }
+  
+  .mobile-break {
+    display: block;
+    flex-basis: 100%;
+    height: 0;
+    margin: 0;
+    order: 2;
+  }
+  
+  .coordinator-card {
+    order: 3;
+  }
+  
+  .member-card {
+    width: 160px;
+    gap: 15px;
+  }
+  
+  .member-image-placeholder {
+    width: 160px;
+    height: 220px;
+  }
+  
+  .member-name {
+    font-size: 1.1rem;
+  }
+  
+  .member-role {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+  
+  .team-divider {
+    margin-top: 50px;
+    height: 60px;
+  }
+}

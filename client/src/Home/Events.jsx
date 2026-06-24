@@ -4,21 +4,22 @@ import StaggerText from '../shared/StaggerText'
 import './Events.css'
 
 const eventData = [
-  { id: 1, cardHeight: "250px" },
-  { id: 2, cardHeight: "200px" },
-  { id: 3, cardHeight: "300px" },
-  { id: 4, cardHeight: "220px" },
-  { id: 5, cardHeight: "260px" },
-  { id: 6, cardHeight: "240px" },
-  { id: 7, cardHeight: "280px" },
-  { id: 8, cardHeight: "180px" } 
+  { id: 1, title: "Chem-E-Jeopardy", cardHeight: "250px" },
+  { id: 2, title: "Chem-E-Car", cardHeight: "200px" },
+  { id: 3, title: "Poster Presentation", cardHeight: "300px" },
+  { id: 4, title: "Technical Paper Presentation", cardHeight: "220px" },
+  { id: 5, title: "Flagship Event", cardHeight: "260px" },
+  { id: 6, title: "K-12 STEM Event", cardHeight: "240px" }
 ]
 
 const Events = () => {
   return (
     <div className="events-section">
       <div className="events-header">
-        <h2 className="section-title">Featured Events</h2>
+        <div className="events-header-text">
+          <h2 className="events-title">Featured Events</h2>
+          <p className="events-subtitle">Discover what's happening at SRC '26</p>
+        </div>
         <Link to="/events" className="view-all-link">
           <StaggerText text="View All Events" hoverColor="var(--primary)" />
         </Link>
@@ -30,7 +31,9 @@ const Events = () => {
             key={event.id} 
             className="event-card" 
             style={{ height: event.cardHeight }}
-          ></div>
+          >
+            <h3 className="event-card-title">{event.title}</h3>
+          </div>
         ))}
       </div>
     </div>

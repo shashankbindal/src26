@@ -155,15 +155,6 @@ export const bentoCards = [
     span: "col-span-1"
   },
   {
-    id: "poster-presentation",
-    name: "Poster Presentation Team",
-    color: "#397551",
-    description: "The Poster Presentation Team provides a platform for researchers and students to showcase their ideas, projects, and findings. They ensure a fair, professional, and engaging presentation environment. Their contributions encourage knowledge exchange and academic collaboration.",
-    chairs: [{ role: "Chair", name: "Anubhav Chaudhary", image: "" }],
-    coordinators: [{ role: "Coordinator", name: "Tanishka Singh", image: "" }],
-    span: "col-span-1"
-  },
-  {
     id: "technical-paper",
     name: "Technical Paper Presentation Team",
     color: "#408059",

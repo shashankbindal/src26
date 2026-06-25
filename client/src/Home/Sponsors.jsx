@@ -1,4 +1,5 @@
 import React from 'react'
+import { useReveal } from './useReveal.js'
 import './Sponsors.css'
 
 const sponsorsData = [
@@ -17,8 +18,10 @@ const sponsorsData = [
 ];
 
 const Sponsors = () => {
+  const [ref, isVisible] = useReveal(0.1);
+
   return (
-    <div className="sponsors-section">
+    <div className={`sponsors-section reveal ${isVisible ? 'visible' : ''}`} ref={ref}>
       <h2 className="sponsors-title">Our Past Sponsors</h2>
       <div className="sponsors-marquee-wrapper">
         <div className="sponsors-marquee-track">

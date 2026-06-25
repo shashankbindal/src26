@@ -1,27 +1,24 @@
 .footer {
-  padding: 20px;
-  background-color: var(--surface-bg);
-  font-family: 'Raleway', sans-serif;
+  padding: 0;
+  background-color: #000;
 }
 
 .footer-card {
   position: relative;
-  background-color: var(--text-primary);
-  border-radius: 32px;
+  background-color: #000;
+  border-top: 4px solid #fff;
   padding: 80px 60px 0 60px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 .dot {
   position: absolute;
   width: 20px;
   height: 20px;
-  background-color: var(--surface-bg);
-  border-radius: 50%;
-  opacity: 0.4;
+  background-color: #f2d600; /* Yellow brutalist dots */
+  border: 2px solid #fff;
 }
 
 .dot-tl { top: 24px; left: 24px; }
@@ -42,42 +39,41 @@
 .footer-left {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
 
 .footer-heading {
   font-size: 3rem;
-  font-weight: 500;
-  color: var(--surface-bg);
+  font-weight: 900;
+  color: #fff;
   margin-bottom: 12px;
-  letter-spacing: -0.5px;
+  text-transform: uppercase;
 }
 
 .footer-primary-link {
-  font-size: 1.1rem;
-  color: var(--primary);
-  text-decoration: underline;
-  text-underline-offset: 6px;
-  transition: color 0.3s ease;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #a4ce50; /* bright green */
+  text-decoration: none;
+  background: #fff;
+  padding: 5px 15px;
+  display: inline-block;
+  color: #000;
+  border: 2px solid #fff;
+  box-shadow: 4px 4px 0 #a4ce50;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .footer-primary-link:hover {
-  color: var(--primary-light);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #a4ce50;
 }
 
 .footer-secondary-link,
 .footer-address {
-  font-size: 0.95rem;
-  color: var(--surface-bg);
-  opacity: 0.6;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.footer-secondary-link:hover {
-  opacity: 1;
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 700;
 }
 
 .footer-right {
@@ -90,10 +86,9 @@
 }
 
 .footer-copyright {
-  font-size: 0.85rem;
-  color: var(--surface-bg);
-  opacity: 0.4;
-  font-weight: 600;
+  font-size: 1rem;
+  color: #f2d600;
+  font-weight: 800;
 }
 
 .footer-links-container {
@@ -111,25 +106,28 @@
 }
 
 .footer-link-row a {
-  font-size: 0.95rem;
-  color: var(--surface-bg);
+  font-size: 1.1rem;
+  color: #fff;
   text-decoration: none;
-  opacity: 0.75;
-  transition: opacity 0.3s ease, color 0.3s ease;
-  font-weight: 500;
+  font-weight: 700;
+  border: 2px solid transparent;
+  padding: 5px 10px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
 }
 
 .footer-link-row a:hover {
-  opacity: 1;
-  color: var(--primary);
+  border-color: #fff;
+  background: #fff;
+  color: #000;
 }
 
 .footer-giant-text {
   font-size: 18vw;
-  font-weight: 800;
+  font-weight: 900;
   text-align: center;
   line-height: 1;
-  color: var(--text-secondary);
+  color: #fff;
   margin-top: auto;
   user-select: none;
   z-index: 1;
@@ -137,11 +135,12 @@
   text-transform: uppercase;
   transform: translateY(0);
   padding-bottom: 2vw;
-
+  
+  /* Keep the cool hover mouse effect but adapt colors */
   background-image: radial-gradient(
-    circle 250px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    var(--primary-dark) 10%,
-    var(--text-secondary) 100%
+    circle 300px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    #475ce6 10%, /* bright blue core */
+    #fff 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -164,7 +163,7 @@
 @media (max-width: 600px) {
   .footer-card {
     padding: 40px 20px 0 20px;
-    border-radius: 20px;
+    border-radius: 0;
   }
   .dot-tl { top: 16px; left: 16px; }
   .dot-tr { top: 16px; right: 16px; }

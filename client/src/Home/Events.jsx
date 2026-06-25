@@ -1,38 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import StaggerText from '../shared/StaggerText'
+import { useReveal } from './useReveal.js'
 import './Events.css'
 
 const eventData = [
-  { id: 1, title: "Chem-E-Jeopardy", cardHeight: "250px" },
-  { id: 2, title: "Chem-E-Car", cardHeight: "200px" },
-  { id: 3, title: "Poster Presentation", cardHeight: "300px" },
-  { id: 4, title: "Technical Paper Presentation", cardHeight: "220px" },
-  { id: 5, title: "Flagship Event", cardHeight: "260px" },
-  { id: 5, title: "K-12 STEM Event", cardHeight: "240px" }
+  { id: 1, title: "Chem-E-Jeopardy", bg: "#00a651", color: "#fff" },
+  { id: 2, title: "Chem-E-Car", bg: "#ff7e40", color: "#000" },
+  { id: 3, title: "Poster Presentation", bg: "#f5eedc", color: "#000" },
+  { id: 4, title: "Technical Paper Presentation", bg: "#00a651", color: "#fff" },
+  { id: 5, title: "Flagship Event", bg: "#000", color: "#fff" },
+  { id: 6, title: "K-12 STEM Event", bg: "#ff7e40", color: "#000" }
 ]
 
 const Events = () => {
+  const [ref, isVisible] = useReveal(0.1);
+
   return (
-    <div className="events-section">
-      <div className="events-header">
-        <div className="events-header-text">
-          <h2 className="events-title">Featured Events</h2>
-          <p className="events-subtitle">Discover what's happening at SRC '26</p>
-        </div>
-        <Link to="/events" className="view-all-link">
-          <StaggerText text="View All Events" hoverColor="var(--primary)" />
+    <div className="rm-events-section" ref={ref}>
+      <div className={`rm-events-header reveal-left ${isVisible ? 'visible' : ''}`}>
+        <h3 className="rm-events-title">Featured Events</h3>
+        <Link to="/events" className="rm-view-all-link">
+          View All &#8594;
         </Link>
       </div>
       
-      <div className="events-masonry">
-        {eventData.map(event => (
+      <div className="rm-events-grid">
+        {eventData.map((event, index) => (
           <div 
             key={event.id} 
-            className="event-card" 
-            style={{ height: event.cardHeight }}
+            className={`rm-event-block rm-event-block-${index} reveal-scale reveal-d${index + 1} ${isVisible ? 'visible' : ''}`}
+            style={{ backgroundColor: event.bg, color: event.color }}
           >
-            <h3 className="event-card-title">{event.title}</h3>
+            <h4 className="rm-event-block-title">{event.title}</h4>
+            <div className="rm-event-block-icon">★</div>
           </div>
         ))}
       </div>

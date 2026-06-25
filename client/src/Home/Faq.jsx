@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useReveal } from './useReveal.js'
 import './Faq.css'
 
 const faqData = [
@@ -14,14 +15,15 @@ const faqData = [
 
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [ref, isVisible] = useReveal(0.1);
 
   const toggleFaq = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <div className="faq-section">
-      <div className="faq-header">
+    <div className="faq-section" ref={ref}>
+      <div className={`faq-header reveal ${isVisible ? 'visible' : ''}`}>
         <h2 className="faq-title">Frequently Asked Questions</h2>
         <p className="faq-subtitle">Everything you need to know about SRC '26</p>
       </div>
@@ -30,7 +32,10 @@ const Faq = () => {
         {faqData.map((item, index) => {
           const isActive = activeIndex === index;
           return (
-            <div key={index} className={`faq-item ${isActive ? 'active' : ''}`}>
+            <div 
+              key={index} 
+              className={`faq-item ${isActive ? 'active' : ''} reveal reveal-d${index + 2} ${isVisible ? 'visible' : ''}`}
+            >
               <button 
                 className="faq-question" 
                 onClick={() => toggleFaq(index)}

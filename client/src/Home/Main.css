@@ -1,12 +1,301 @@
-.home-container {
-  padding: 0 4vw;
-  max-width: 1400px;
+/* Main Readymag Aesthetic Container */
+.rm-container {
+  width: 100%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #000;
+  overflow-x: hidden;
+}
+
+/* --- Top Green Section & Grid --- */
+.rm-green-section {
+  background-color: #00a651; /* Strong Green */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: gridScroll 20s linear infinite;
+}
+
+@keyframes gridScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 30px 30px; }
+}
+
+/* --- Hero Title --- */
+.rm-title-wrapper {
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.rm-title-main {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  color: #f5eedc; /* Beige */
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 0.9;
+  text-shadow: 
+    2px 2px 0 #000, 
+    -2px -2px 0 #000, 
+    2px -2px 0 #000, 
+    -2px 2px 0 #000,
+    4px 4px 0 #000;
+}
+
+.rm-title-sub {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #ff7e40; /* Orange */
+  text-transform: uppercase;
+  margin: 0;
+  margin-top: -10px;
+  line-height: 1;
+  text-shadow: 
+    2px 2px 0 #000, 
+    -2px -2px 0 #000, 
+    2px -2px 0 #000, 
+    -2px 2px 0 #000,
+    3px 3px 0 #000;
+}
+
+.rm-title-desc {
+  color: #000;
+  font-weight: 700;
+  margin-top: 15px;
+  background: #ff7e40; /* Orange */
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 2px solid #000;
+  font-size: 1rem;
+}
+
+.rm-title-pill {
+  margin-top: 15px;
+  background: #fff;
+  padding: 8px 30px;
+  border-radius: 30px;
+  border: 2px solid #000;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #000;
+  transition: all 0.2s ease;
+}
+
+.rm-title-pill:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 4px 4px 0 #000;
+  background: #ff7e40;
+  color: #000;
+}
+
+.rm-title-pill:active {
+  transform: translate(2px, 2px) scale(0.96);
+  box-shadow: 0px 0px 0 #000;
+}
+
+/* --- Notebook Container --- */
+.rm-notebook {
+  width: 90%;
+  max-width: 1200px;
+  background-color: #f5eedc; /* Beige */
+  border: 3px solid #000;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: -5px;
+  z-index: 10;
+  box-shadow: inset -5px -5px 10px rgba(0,0,0,0.05);
+}
+
+.rm-notebook-rings {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  position: absolute;
+  top: -15px;
+}
+
+.rm-ring {
+  width: 15px;
+  height: 40px;
+  background: linear-gradient(180deg, #fff 0%, #ccc 100%);
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.rm-ring::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #ff7e40; /* Orange */
+  border-radius: 50%;
+}
+
+.rm-notebook-inner {
+  padding: 40px 20px;
+  min-height: 800px;
+}
+
+/* --- Tool Kit --- */
+.rm-toolkit-wrapper {
+  margin-top: 80px;
+  padding: 20px;
+  text-align: center;
+}
+
+.rm-toolkit-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  margin-bottom: 40px;
+  color: #00a651; /* Green */
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 3px 3px 0 #000;
+}
+
+.rm-toolkit-title span {
+  color: #ff7e40; /* Orange */
+}
+
+/* --- Beige Section --- */
+.rm-beige-section {
+  background-color: #f5eedc; /* Beige */
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  padding: 80px 5%;
+  position: relative;
+  z-index: 5;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.rm-section-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #000;
+}
+
+.rm-beige-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* --- Orange Section --- */
+.rm-orange-section {
+  background-color: #ff7e40; /* Orange */
+  padding: 80px 5%;
+  border-bottom: 3px solid #000;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridScroll 25s linear infinite;
+}
+
+.rm-orange-content {
+  max-width: 800px;
   margin: 0 auto;
 }
 
-@media (max-width: 900px) {
-  .banner-content {
-    grid-template-columns: 1fr;
-    flex-direction: column;
+.rm-orange-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.rm-orange-content p {
+  font-size: 1.2rem;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.rm-registration-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: transparent;
+}
+
+.rm-registration-box input,
+.rm-registration-box select,
+.rm-registration-box button {
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #000;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.rm-registration-box input,
+.rm-registration-box select {
+  background-color: #f5eedc; /* Beige */
+  color: #000;
+}
+
+.rm-registration-box button {
+  background-color: #00a651; /* Green */
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.rm-registration-box button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0 #000;
+}
+
+/* --- Black Section --- */
+.rm-black-section {
+  background-color: #111;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: #fff;
+  padding: 80px 5%;
+  min-height: 50vh;
+}
+
+.rm-black-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .rm-registration-box {
+    flex-direction: row;
+  }
+  .rm-registration-box input {
+    flex: 2;
+  }
+  .rm-registration-box select {
+    flex: 1;
+  }
+  .rm-registration-box button {
+    flex: 1;
   }
 }

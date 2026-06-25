@@ -2,18 +2,19 @@
 
 .navbar {
   position: fixed;
-  top: 24px;
+  top: 0;
   left: 0;
   right: 0;
-  margin: 0 auto;
-  width: fit-content;
-  z-index: 1000;
+  margin: 0;
+  width: 100%;
+  z-index: 999;
   background: var(--surface-glass);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  padding: 16px 36px;
-  border-radius: 16px;
-  border: 1px solid var(--border-light);
+  padding: 20px 0;
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid var(--border-light);
   transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
@@ -21,10 +22,10 @@
 }
 
 .navbar.scrolled {
-  top: 16px;
-  background: var(--surface-glass);
-  border: 1px solid var(--border-medium);
-  padding: 14px 32px;
+  top: 0;
+  background: var(--surface-bg);
+  border-bottom: 2px solid var(--border-medium);
+  padding: 15px 0;
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -42,7 +43,7 @@
 
 .nav-side-logo {
   position: fixed;
-  top: 24px;
+  top: 15px;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -53,7 +54,7 @@
 }
 
 .nav-side-logo.scrolled {
-  top: 16px;
+  top: 10px;
 }
 
 .navbar-logo-img {
@@ -64,11 +65,11 @@
 }
 
 .rgipt-side-logo .navbar-logo-img {
-  height: 75px;
+  height: 55px;
 }
 
 .aiche-side-logo .navbar-logo-img {
-  height: 75px;
+  height: 55px;
 }
 
 .nav-side-logo:hover .navbar-logo-img {
@@ -210,25 +211,27 @@
 
 @media (max-width: 860px) {
   .navbar {
-    top: 24px;
-    left: auto; 
-    right: 24px;
+    top: 0;
+    left: 0; 
+    right: 0;
     margin: 0;
-    width: auto;
-    padding: 8px; 
-    border-radius: 10px;
+    width: 100%;
+    padding: 15px 24px; 
+    border-radius: 0;
+    border-bottom: 2px solid var(--border-light);
   }
 
   .navbar.scrolled {
-    top: 16px;
-    left: auto; 
-    right: 16px;
-    padding: 6px; 
+    top: 0;
+    left: 0; 
+    right: 0;
+    padding: 10px 24px; 
   }
 
   .nav-container {
     padding: 0;
     gap: 0;
+    justify-content: flex-end;
   }
 
   .nav-menu {
@@ -237,33 +240,33 @@
 
   .nav-side-logo {
     display: flex;
-    top: 24px;
+    top: 15px;
   }
 
   .rgipt-side-logo {
-    left: 24px;
+    left: 20px;
   }
 
   .rgipt-side-logo.scrolled {
-    left: 16px;
+    left: 20px;
   }
 
   .rgipt-side-logo .navbar-logo-img {
-    height: 48px;
+    height: 38px;
   }
 
   .aiche-side-logo {
-    left: 85px;
+    left: 65px;
     right: auto;
     gap: 12px;
   }
 
   .aiche-side-logo.scrolled {
-    left: 77px;
+    left: 65px;
   }
 
   .aiche-side-logo .navbar-logo-img {
-    height: 48px;
+    height: 38px;
   }
 
   .mobile-nav-overlay {

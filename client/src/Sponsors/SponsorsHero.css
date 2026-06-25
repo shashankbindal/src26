@@ -51,8 +51,8 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 800px;
-  padding: 50px 80px;
+  max-width: 600px;
+  padding: 30px 50px;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -80,7 +80,21 @@
     padding: 100px 20px 60px;
   }
 
+  .sponsors-hero-bg {
+    background-attachment: scroll;
+  }
+
+  .sponsors-hero-content {
+    padding: 30px 20px;
+    border-radius: 16px;
+    margin: 0 16px;
+  }
+
   .sponsors-hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+  }
+  
+  .sponsors-hero-subtitle {
+    font-size: 1rem;
   }
 }

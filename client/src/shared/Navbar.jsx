@@ -7,7 +7,7 @@ const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'Events', href: '/events' },
   { label: 'Registration', href: '/register' },
-  { label: 'Accommodation', href: '/accommodation' },
+  // { label: 'Accommodation', href: '/accommodation' },
   { label: 'Sponsors', href: '/sponsors' },
   { label: 'Team', href: '/team' },
   { label: 'Contact', href: '/contact' },
@@ -65,6 +65,14 @@ const Navbar = () => {
 
   return (
     <>
+      <div className={`nav-side-logo rgipt-side-logo ${scrolled ? 'scrolled' : ''}`}>
+        <img src="/rgipt.png" alt="RGIPT Logo" className="navbar-logo-img" />
+      </div>
+      <div className={`nav-side-logo aiche-side-logo ${scrolled ? 'scrolled' : ''}`}>
+        <img src="/aiche.png" alt="AIChE Logo" className="navbar-logo-img" />
+        <img src="/aiche-rgipt.jpeg" alt="AIChE RGIPT Logo" className="navbar-logo-img aiche-round-logo" />
+      </div>
+
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <ul className="nav-menu">

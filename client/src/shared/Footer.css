@@ -133,7 +133,7 @@
   user-select: none;
   z-index: 1;
   letter-spacing: 1vw;
-  text-transform: lowercase;
+  text-transform: uppercase;
   transform: translateY(0);
   padding-bottom: 2vw;
 

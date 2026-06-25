@@ -8,7 +8,7 @@ const Registration = () => {
   return (
     <div className="reg-simple-container">
       <h1 className="reg-simple-title">Registration Not Yet Started</h1>
-      <p className="reg-simple-desc">The dashboard is currently under maintenance.</p>
+      <p className="reg-simple-desc">Event registration has not started yet. Please check back later.</p>
       
       <button className="reg-simple-btn" onClick={() => navigate('/')}>
         Back to Home

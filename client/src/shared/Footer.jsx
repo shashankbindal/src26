@@ -25,8 +25,8 @@ const Footer = () => {
         <div className="footer-top">
           <div className="footer-left">
             <h2 className="footer-heading">Contacts</h2>
-            <a href="mailto:[EMAIL_ADDRESS]" className="footer-primary-link">[EMAIL_ADDRESS] ↗</a>
-            <a href="tel:+911234567890" className="footer-secondary-link">+91 1234567890 ↗</a>
+            <a href="mailto:[aiche@rgipt.ac.in]" className="footer-primary-link">aiche@rgipt.ac.in ↗</a>
+            {/* <a href="tel:+911234567890" className="footer-secondary-link">+91 1234567890 ↗</a> */}
             <p className="footer-address">RGIPT, Rae Bareli, India</p>
           </div>
 
@@ -43,15 +43,15 @@ const Footer = () => {
                 <Link to="/team">Our Team ↗</Link>
               </div>
               
-              <div className="footer-link-row">
+              {/* <div className="footer-link-row">
                 <a href="#support">Support ↗</a>
                 <a href="#privacy">Privacy Policy ↗</a>
                 <a href="#terms">Terms & Conditions ↗</a>
-              </div>
+              </div> */}
 
               <div className="footer-link-row">
-                <a href="#">Instagram ↗</a>
-                <a href="#">LinkedIn ↗</a>
+                {/* <a href="#">Instagram ↗</a>
+                <a href="#">LinkedIn ↗</a> */}
               </div>
             </div>
           </div>

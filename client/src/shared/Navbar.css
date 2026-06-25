@@ -40,6 +40,55 @@
   gap: 48px;
 }
 
+.nav-side-logo {
+  position: fixed;
+  top: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  gap: 16px;
+}
+
+.nav-side-logo.scrolled {
+  top: 16px;
+}
+
+.navbar-logo-img {
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+  transition: transform 0.3s ease;
+}
+
+.rgipt-side-logo .navbar-logo-img {
+  height: 90px;
+}
+
+.aiche-side-logo .navbar-logo-img {
+  height: 60px;
+}
+
+.nav-side-logo:hover .navbar-logo-img {
+  transform: scale(1.05);
+}
+
+.rgipt-side-logo {
+  left: 36px;
+}
+
+.aiche-side-logo {
+  right: 36px;
+  gap: 16px;
+}
+
+.aiche-round-logo {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .nav-logo {
   color: #151515;
   font-family: 'Raleway', sans-serif;
@@ -162,8 +211,8 @@
 @media (max-width: 860px) {
   .navbar {
     top: 24px;
-    left: 24px; 
-    right: auto;
+    left: auto; 
+    right: 24px;
     margin: 0;
     width: auto;
     padding: 8px; 
@@ -172,8 +221,8 @@
 
   .navbar.scrolled {
     top: 16px;
-    left: 16px; 
-    right: auto;
+    left: auto; 
+    right: 16px;
     padding: 6px; 
   }
 
@@ -184,6 +233,37 @@
 
   .nav-menu {
     display: none;
+  }
+
+  .nav-side-logo {
+    display: flex;
+    top: 24px;
+  }
+
+  .rgipt-side-logo {
+    left: 24px;
+  }
+
+  .rgipt-side-logo.scrolled {
+    left: 16px;
+  }
+
+  .rgipt-side-logo .navbar-logo-img {
+    height: 55px;
+  }
+
+  .aiche-side-logo {
+    left: 90px;
+    right: auto;
+    gap: 12px;
+  }
+
+  .aiche-side-logo.scrolled {
+    left: 82px;
+  }
+
+  .aiche-side-logo .navbar-logo-img {
+    height: 40px;
   }
 
   .mobile-nav-overlay {

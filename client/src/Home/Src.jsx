@@ -70,12 +70,12 @@ const Src = () => {
         <div className="info-card card-2" ref={card2Ref}>
           <div className="info-card-content">
             <h2 className="info-card-title">
-              About Viplav
+              About VIPLAV
             </h2>
             <div className="info-card-text">
-              <p>"Every great advancement begins with a revolution of thought. This year, AIChE India SRC 2026 proudly presents Viplav—a call to transform ideas into impact, challenges into opportunities, and ambition into innovation."</p>
-              <p>Viplav, a Sanskrit term signifying transformation, revolution, and progressive change, captures the spirit of AIChE India SRC 2026. Hosted by Rajiv Gandhi Institute of Petroleum Technology (RGIPT)—an Institute of National Importance renowned for its excellence in Chemical Engineering, Petroleum Engineering, and Energy studies—this theme reflects the institute's commitment to innovation, academic rigour, and industry-oriented learning.</p>
-              <p>SRC 2026 aims to inspire the next generation of engineers while addressing the evolving challenges and opportunities in the chemical, energy, and process industries. More than a conference, Viplav is a celebration of transformation, innovation, and the collective vision shaping the future of engineering.</p>
+              <p>"Every great advancement begins with a revolution of thought. This year, AIChE India SRC 2026 proudly presents VIPLAV—a call to transform ideas into impact, challenges into opportunities, and ambition into innovation."</p>
+              <p>VIPLAV, a Sanskrit term signifying transformation, revolution, and progressive change, captures the spirit of AIChE India SRC 2026. Hosted by Rajiv Gandhi Institute of Petroleum Technology (RGIPT)—an Institute of National Importance renowned for its excellence in Chemical Engineering, Petroleum Engineering, and Energy studies—this theme reflects the institute's commitment to innovation, academic rigour, and industry-oriented learning.</p>
+              <p>SRC 2026 aims to inspire the next generation of engineers while addressing the evolving challenges and opportunities in the chemical, energy, and process industries. More than a conference, VIPLAV is a celebration of transformation, innovation, and the collective vision shaping the future of engineering.</p>
             </div>
           </div>
         </div>

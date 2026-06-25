@@ -1,0 +1,42 @@
+.events-page-container {
+  padding: 140px 5vw 80px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.events-page-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.events-page-title {
+  font-size: 4rem;
+  color: var(--text-primary);
+  font-weight: 900;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+.events-page-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.events-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .events-page-container {
+    padding: 120px 5vw 60px;
+  }
+
+  .events-page-title {
+    font-size: 3rem;
+  }
+}

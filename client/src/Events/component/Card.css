@@ -1,0 +1,112 @@
+.competition-card-container {
+  display: flex;
+  background: var(--surface-glass);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-medium);
+  margin-bottom: 48px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.competition-card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.competition-card-container.even {
+  flex-direction: row-reverse;
+}
+
+.competition-card-image {
+  flex: 1.3;
+  min-height: 350px;
+  position: relative;
+  overflow: hidden;
+}
+
+.competition-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.competition-card-container:hover .competition-card-image img {
+  transform: scale(1.05);
+}
+
+.competition-card-content {
+  flex: 1;
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--surface-bg-dark);
+}
+
+.competition-card-title {
+  font-size: 2.2rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.competition-card-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.competition-rulebook-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--primary);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.competition-rulebook-btn:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 4px 16px var(--primary-glow-strong);
+  transform: translateY(-2px);
+}
+
+.competition-rulebook-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.competition-rulebook-btn:hover svg {
+  transform: translateY(2px);
+}
+
+@media (max-width: 900px) {
+  .competition-card-container,
+  .competition-card-container.even {
+    flex-direction: column;
+  }
+  
+  .competition-card-image {
+    min-height: 250px;
+  }
+  
+  .competition-card-content {
+    padding: 40px 24px;
+  }
+  
+  .competition-card-title {
+    font-size: 1.8rem;
+  }
+}

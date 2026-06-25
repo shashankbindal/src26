@@ -9,7 +9,7 @@ const eventData = [
   { id: 3, title: "Poster Presentation", cardHeight: "300px" },
   { id: 4, title: "Technical Paper Presentation", cardHeight: "220px" },
   { id: 5, title: "Flagship Event", cardHeight: "260px" },
-  { id: 6, title: "K-12 STEM Event", cardHeight: "240px" }
+  { id: 5, title: "K-12 STEM Event", cardHeight: "240px" }
 ]
 
 const Events = () => {

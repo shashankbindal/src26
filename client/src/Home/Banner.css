@@ -141,7 +141,7 @@
 
 .theme-title {
   font-weight: 800;
-  color: transparent;
+  color: black;
   -webkit-text-stroke: 1.6px var(--text-primary);
   font-size: 1.7em;
   text-transform: uppercase;

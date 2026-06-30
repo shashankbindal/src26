@@ -199,10 +199,12 @@
 
 /* ── RIGHT column ── */
 .hero-right {
-  position: relative;
-  z-index: 1;
-  flex: 0 0 55%;
-  align-self: stretch;
+  position: absolute;
+  left: 20%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
 }
 
 .hero-image-wrap {
@@ -219,17 +221,16 @@
   filter: saturate(1.08) brightness(1.0);
 }
 
-/* Tight left-edge fade — image fully visible from 25% into right column
-   so the crisp transition aligns with where the विप्लव text ends */
+/* Fade covers only the first 18% of the image panel (left edge into cream) */
 .hero-image-fade {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
     var(--bg-primary) 0%,
-    color-mix(in srgb, var(--bg-primary) 65%, transparent) 10%,
-    color-mix(in srgb, var(--bg-primary) 20%, transparent) 18%,
-    transparent 26%
+    color-mix(in srgb, var(--bg-primary) 55%, transparent) 8%,
+    color-mix(in srgb, var(--bg-primary) 12%, transparent) 14%,
+    transparent 20%
   );
   pointer-events: none;
 }

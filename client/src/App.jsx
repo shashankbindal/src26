@@ -15,6 +15,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute.jsx";
 
 /* Public pages */
 import Main from "./Home/Main.jsx";
+import About from "./About/About.jsx";
 import Event from "./Events/page/Event.jsx";
 import Team from "./Team/page/Team.jsx";
 import Accommodation from "./Accommodation/Accommodation.jsx";
@@ -132,6 +133,7 @@ const AppContent = () => {
           <Routes location={location} key={location.pathname}>
             {/* ── Public ── */}
             <Route path="/"        element={<PageTransition><Main /></PageTransition>} />
+            <Route path="/about"   element={<PageTransition><About /></PageTransition>} />
             <Route path="/events"  element={<PageTransition><Event /></PageTransition>} />
             <Route path="/team"    element={<PageTransition><Team /></PageTransition>} />
             <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />

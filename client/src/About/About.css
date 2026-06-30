@@ -1,7 +1,45 @@
+/* ===== ABOUT PAGE HERO ===== */
+.about-hero {
+  width: 100%;
+  padding: 180px 5% 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-primary);
+  text-align: center;
+}
+
+.about-hero-content {
+  max-width: 760px;
+}
+
+.about-hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.about-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.15;
+}
+
+@media (max-width: 768px) {
+  .about-hero { padding: 120px 6% 40px; }
+}
+
 /* ===== REFERENCE DESIGN LAYOUT ===== */
 .src-section-ref {
   width: 100%;
-  padding: 80px 0;
+  padding: 40px 0 100px;
   display: flex;
   flex-direction: column;
   gap: 120px;
@@ -73,7 +111,7 @@
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 500;
-  color: var(--text-light);
+  color: var(--text-primary);
   line-height: 1.2;
   margin-bottom: 30px;
   opacity: 0; /* GSAP takes over on reveal */
@@ -117,6 +155,45 @@
 }
 .ref-block:hover .ref-img { transform: scale(1.05); }
 
+/* ===== ANIMATED STAT ROW ===== */
+.ref-stats-row {
+  display: flex;
+  gap: 40px;
+  margin-top: 8px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border-light);
+}
+
+.ref-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ref-stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.count-up {
+  font-variant-numeric: tabular-nums; /* prevents width jitter as digits change */
+}
+
+.ref-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+  .ref-stats-row { gap: 24px; flex-wrap: wrap; }
+}
+
 /* ---- Image wipe-reveal — scaleX overlay collapses away from pill edge ---- */
 .ref-image-wrapper::before {
   content: '';
@@ -140,8 +217,8 @@
 
 /* ---- Responsive ---- */
 @media (max-width: 1024px) {
-  .ref-block { 
-    display: block; 
+  .ref-block {
+    display: block;
   }
   .ref-block::after {
     content: "";
@@ -149,27 +226,27 @@
     clear: both;
   }
   .ref-text-content { padding: 0 4%; max-width: 100%; display: block; }
-  .ref-image-wrapper { 
+  .ref-image-wrapper {
     width: 35%;
-    height: 360px; 
+    height: 360px;
     margin-bottom: 20px;
   }
-  .img-right { 
-    float: right; 
-    margin-left: 20px; 
-    border-top-left-radius: 100px; 
-    border-bottom-left-radius: 100px; 
+  .img-right {
+    float: right;
+    margin-left: 20px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
   }
-  .img-left { 
-    float: left; 
-    margin-right: 20px; 
-    border-top-right-radius: 100px; 
-    border-bottom-right-radius: 100px; 
+  .img-left {
+    float: left;
+    margin-right: 20px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
   }
 }
 
 @media (max-width: 768px) {
-  .src-section-ref { gap: 80px; padding: 60px 0; }
+  .src-section-ref { gap: 80px; padding: 20px 0 60px; }
   .ref-image-wrapper { width: 45%; height: 320px; }
   .ref-title { font-size: clamp(1.5rem, 5vw, 2.2rem); margin-bottom: 20px; }
   .img-right { border-top-left-radius: 60px; border-bottom-left-radius: 60px; margin-left: 15px; }
@@ -177,7 +254,7 @@
 }
 
 @media (max-width: 480px) {
-  .src-section-ref { gap: 56px; padding: 40px 0; }
+  .src-section-ref { gap: 56px; padding: 16px 0 40px; }
   .ref-image-wrapper { width: 50%; height: 260px; }
   .ref-subtitle { font-size: 0.75rem; gap: 10px; }
   .ref-line { width: 28px; }

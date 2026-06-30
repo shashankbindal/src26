@@ -9,6 +9,20 @@
   overflow: hidden;
 }
 
+/* Eases the solid green into the cream page color below it, so the cut
+   into the next section isn't a hard line. */
+.about-teaser-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(to bottom, transparent, var(--bg-primary));
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* Soft depth blob behind the text panel — gives the flat color some life
    without resorting to a gradient fill on the section itself. */
 .about-teaser-glow {
@@ -140,6 +154,7 @@
 
 @media (max-width: 768px) {
   .about-teaser-section { flex-direction: column; min-height: 0; }
+  .about-teaser-section::after { height: 70px; }
   .about-teaser-image-wrap {
     order: -1;
     height: 320px;

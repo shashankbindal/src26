@@ -1,77 +1,71 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useReveal } from './useReveal.js'
 import './Events.css'
 
 const eventData = [
-  { id: 1, title: "Chem-E-Jeopardy", desc: "Test your chemical engineering knowledge", img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&auto=format&fit=crop&q=80" },
-  { id: 2, title: "Chem-E-Car", desc: "Design & race a chemical-powered car", img: "https://www.aiche.org/sites/default/files/images/conference/event/23370477461_f16f1dd228_z.jpg" },
-  { id: 3, title: "Poster Presentation", desc: "Showcase your research to industry experts", img: "https://images.unsplash.com/photo-1515603403036-f3d35f75ca52?q=80&w=1170&auto=format&fit=crop" },
-  { id: 4, title: "Paper Presentation", desc: "Present your technical research & findings", img: "https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=1170&auto=format&fit=crop" },
-  { id: 5, title: "K-12 STEM", desc: "Inspiring the next generation of engineers", img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=80" }
+  { id: 1, slug: 'chem-e-car',   title: "Chem-E-Car",         desc: "Design & race a chemical-powered car",         img: "https://www.aiche.org/sites/default/files/images/conference/event/23370477461_f16f1dd228_z.jpg" },
+  { id: 2, slug: 'k-12',         title: "K-12 STEM",           desc: "Inspiring the next generation of engineers",   img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=80" },
+  { id: 3, slug: 'jeopardy',     title: "Chem-E-Jeopardy",    desc: "Test your chemical engineering knowledge",      img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&auto=format&fit=crop&q=80" },
+  { id: 4, slug: 'poster',       title: "Poster Presentation", desc: "Showcase your research to industry experts",   img: "https://images.unsplash.com/photo-1515603403036-f3d35f75ca52?q=80&w=1170&auto=format&fit=crop" },
+  { id: 5, slug: 'paper',        title: "Paper Presentation",  desc: "Present your technical research & findings",   img: "https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=1170&auto=format&fit=crop" },
 ]
 
-const TX_MAP = [0, 105, 190] // Percentages of width
-const SCALE_MAP = [1, 0.8, 0.6]
-const OPACITY_MAP = [1, 0.7, 0.4]
+const TX  = [0, 108, 196]
+const SCL = [1, 0.82, 0.66]
+const OPC = [1, 0.72, 0.42]
 
 const getCardStyle = (offset) => {
-  const abs = Math.abs(offset)
+  const abs  = Math.abs(offset)
   const sign = Math.sign(offset)
-
-  if (abs > 2) {
-    return { opacity: 0, pointerEvents: 'none', transform: `translateX(${sign * 260}%) scale(0.4)`, zIndex: 1 }
-  }
-
+  if (abs > 2) return { opacity: 0, pointerEvents: 'none', transform: `translateX(${sign * 260}%) scale(0.5)`, zIndex: 1 }
   return {
-    transform: `translateX(${sign * TX_MAP[abs]}%) scale(${SCALE_MAP[abs]})`,
+    transform: `translateX(${sign * TX[abs]}%) scale(${SCL[abs]})`,
     zIndex: 10 - abs,
-    opacity: OPACITY_MAP[abs],
+    opacity: OPC[abs],
     pointerEvents: 'auto',
   }
 }
 
 const Events = () => {
   const [ref, isVisible] = useReveal(0.1)
-  const [activeIndex, setActiveIndex] = useState(2)
-
-
+  const [active, setActive] = useState(2)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    if (!isVisible) return; // Pause auto-play when off-screen to save CPU/GPU overhead
-    const timer = setInterval(() => {
-      setActiveIndex(prev => (prev + 1) % eventData.length)
-    }, 4000) // Change card every 4 seconds
-    return () => clearInterval(timer)
+    if (!isVisible) return
+    const t = setInterval(() => setActive(p => (p + 1) % eventData.length), 4000)
+    return () => clearInterval(t)
   }, [isVisible])
 
+  const handleCardClick = useCallback((index) => {
+    const offset = Math.abs(index - active)
+    if (offset === 0) {
+      // Centre card → go to the events page anchored to this event
+      navigate(`/events#event-${eventData[index].id}`)
+    } else {
+      setActive(index)
+    }
+  }, [active, navigate])
+
   return (
-    <div className="fan-section" ref={ref}>
+    <section className="fan-section" ref={ref}>
       <div className={`fan-header ${isVisible ? 'visible' : ''}`}>
         <div className="fan-header-left">
-          <h2 className="fan-title">
-            Featured Events
-          </h2>
+          <span className="fan-eyebrow">Events</span>
+          <h2 className="fan-title">Featured Events</h2>
         </div>
-        <div className="fan-header-right" style={{ justifyContent: 'center', alignItems: 'flex-end' }}>
-          <Link to="/events" className="fan-explore-btn" data-magnetic>View All Events</Link>
-        </div>
+        <button className="fan-explore-btn" onClick={() => navigate('/events')}>
+          View All →
+        </button>
       </div>
 
       <div className={`fan-stage ${isVisible ? 'visible' : ''}`}>
-        <div className="fan-corner fan-corner--tl" />
-        <div className="fan-corner fan-corner--tr" />
-        <div className="fan-corner fan-corner--bl" />
-        <div className="fan-corner fan-corner--br" />
-
-        <div className="fan-label">
-          <h3 className="fan-label-title">{eventData[activeIndex].title}</h3>
-          <p className="fan-label-sub">{eventData[activeIndex].desc}</p>
-        </div>
+        <p className="fan-hint">Tap the centre card to explore</p>
 
         <div className="fan-track">
-          {eventData.map((event, index) => {
-            let offset = index - activeIndex
+          {eventData.map((event, i) => {
+            let offset = i - active
             if (offset < -2) offset += eventData.length
             if (offset > 2) offset -= eventData.length
             const isCenter = offset === 0
@@ -81,18 +75,39 @@ const Events = () => {
                 key={event.id}
                 className={`fan-card${isCenter ? ' fan-card--active' : ''}`}
                 style={getCardStyle(offset)}
-                onClick={() => { if (!isCenter) setActiveIndex(index) }}
+                onClick={() => handleCardClick(i)}
+                role="button"
+                tabIndex={isCenter ? 0 : -1}
+                aria-label={isCenter ? `Open ${event.title}` : `Go to ${event.title}`}
+                onKeyDown={e => e.key === 'Enter' && handleCardClick(i)}
               >
                 <img src={event.img} alt={event.title} className="fan-card-img" loading="lazy" decoding="async" />
                 <div className="fan-card-overlay" />
+                {isCenter && (
+                  <div className="fan-card-label">
+                    <span className="fan-card-tag">AIChE SRC 2026</span>
+                    <h3 className="fan-card-name">{event.title}</h3>
+                    <p className="fan-card-desc">{event.desc}</p>
+                  </div>
+                )}
+                {isCenter && <span className="fan-card-cta">Explore →</span>}
               </div>
             )
           })}
         </div>
 
-
+        <div className="fan-dots">
+          {eventData.map((_, i) => (
+            <button
+              key={i}
+              className={`fan-dot${i === active ? ' fan-dot--active' : ''}`}
+              onClick={() => setActive(i)}
+              aria-label={`Go to ${eventData[i].title}`}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 

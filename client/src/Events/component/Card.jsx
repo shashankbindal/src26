@@ -19,6 +19,7 @@ const Card = ({ event, index }) => {
 
   return (
     <div
+      id={`event-${event.id}`}
       ref={cardRef}
       className={`competition-card-container ${isEven ? 'even' : 'odd'} reveal-scale ${cardVisible ? 'visible' : ''}`}
       style={{ backgroundColor: bgColor, color: textColor, borderColor: '#000' }}

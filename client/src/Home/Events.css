@@ -1,9 +1,8 @@
-/* ===== EVENTS FAN CAROUSEL ===== */
-
+/* ===== FEATURED EVENTS — borderless fan carousel ===== */
 .fan-section {
   width: 100%;
   padding: 80px 5%;
-  background-color: var(--bg-primary);
+  background: var(--bg-primary);
   overflow: hidden;
 }
 
@@ -11,368 +10,240 @@
 .fan-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 60px;
+  align-items: flex-end;
+  margin-bottom: 52px;
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.fan-header.visible { opacity: 1; transform: translateY(0); }
 
-.fan-header.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.fan-header-left { display: flex; flex-direction: column; gap: 6px; }
 
-.fan-header-left {
-  flex: 1.2;
-  padding-right: 40px;
-}
-
-.fan-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  font-weight: 500;
-  line-height: 1.1;
-  color: var(--text-light);
-}
-
-.fan-accent {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--primary);
-}
-
-.fan-header-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-.fan-desc {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-.fan-explore-btn {
-  display: inline-block;
-  padding: 12px 32px;
-  background-color: var(--primary);
-  color: #111;
-  border-radius: 40px;
-  font-weight: 600;
-  text-decoration: none;
-  font-family: var(--font-body);
-  transition: background-color var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.fan-explore-btn:hover {
-  background-color: var(--primary-light);
-  color: #111;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(62, 207, 107, 0.3);
-}
-
-/* ---- Stage (the framed area with corner brackets) ---- */
-.fan-stage {
-  position: relative;
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 48px 70px 56px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
-    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-}
-
-.fan-stage.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ---- Corner bracket decorations ---- */
-.fan-corner {
-  position: absolute;
-  width: 52px;
-  height: 52px;
-  border-color: var(--primary);
-  border-style: solid;
-  border-radius: 4px;
-}
-
-.fan-corner--tl {
-  top: 0;
-  left: 0;
-  border-width: 3px 0 0 3px;
-}
-
-.fan-corner--tr {
-  top: 0;
-  right: 0;
-  border-width: 3px 3px 0 0;
-}
-
-.fan-corner--bl {
-  bottom: 0;
-  left: 0;
-  border-width: 0 0 3px 3px;
-}
-
-.fan-corner--br {
-  bottom: 0;
-  right: 0;
-  border-width: 0 3px 3px 0;
-}
-
-/* ---- Active card label ---- */
-.fan-label {
-  text-align: center;
-  margin-bottom: 24px;
-  min-height: 72px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 4px;
-}
-
-.fan-label-title {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--text-light);
-}
-
-.fan-label-sub {
+.fan-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--primary);
 }
 
-/* ---- Track (the fan spread area) ---- */
+.fan-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.fan-explore-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--primary);
+  transition: all var(--transition-fast);
+}
+
+.fan-explore-btn:hover {
+  color: var(--primary-light);
+  border-bottom-color: var(--primary-light);
+}
+
+/* ---- Stage (no brackets, just space) ---- */
+.fan-stage {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 0 56px;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+.fan-stage.visible { opacity: 1; transform: translateY(0); }
+
+.fan-hint {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+/* ---- Cards track ---- */
 .fan-track {
   position: relative;
   width: 100%;
-  height: 430px;
+  height: 460px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* ---- Individual cards ---- */
+/* ---- Individual card ---- */
 .fan-card {
   position: absolute;
-  width: 250px;
-  height: 380px;
-  border-radius: 20px;
+  width: 260px;
+  height: 400px;
+  border-radius: 24px;
   overflow: hidden;
   cursor: pointer;
-  background: #1a1a1a;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+  background: var(--bg-elevated);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.2);
   transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.55s ease;
+    opacity 0.55s ease,
+    box-shadow 0.4s ease;
   will-change: transform, opacity;
+  outline: none;
+}
+
+.fan-card:focus-visible {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 0 0 3px var(--primary);
 }
 
 .fan-card--active {
-  cursor: default;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6),
-    0 0 0 4px #ffffff;
-}
-
-.fan-card:not(.fan-card--active):hover {
-  filter: brightness(1.15);
+  cursor: pointer;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5), 0 0 0 2px var(--primary);
 }
 
 .fan-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.1) brightness(0.92);
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+  filter: saturate(1.1) brightness(0.88);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
   display: block;
 }
+.fan-card--active .fan-card-img { transform: scale(1.04); filter: saturate(1.15) brightness(0.82); }
 
-.fan-card--active .fan-card-img {
-  transform: scale(1.02);
-}
-
+/* Rich gradient overlay from bottom */
 .fan-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.72));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(0, 0, 0, 0.12) 40%,
+    rgba(0, 0, 0, 0.72) 75%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
   pointer-events: none;
 }
 
-/* ---- Navigation controls ---- */
-.fan-controls {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  margin-top: 40px;
+/* Text overlay on active card */
+.fan-card-label {
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  right: 0;
+  padding: 0 22px;
+  z-index: 2;
+  pointer-events: none;
 }
 
-.fan-btn {
-  width: 46px;
-  height: 46px;
+.fan-card-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.fan-card-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 6px;
+}
+
+.fan-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* "Explore →" badge at bottom of active card */
+.fan-card-cta {
+  position: absolute;
+  bottom: 18px;
+  left: 22px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  pointer-events: none;
+}
+
+/* ---- Dot progress indicators ---- */
+.fan-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.fan-dot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
+  background: var(--border-dark);
   border: none;
   cursor: pointer;
-  font-size: 1.15rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color var(--transition-fast),
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
+  padding: 0;
+  transition: all 0.3s ease;
 }
 
-.fan-btn--prev {
-  background: var(--card-bg-subtle);
-  color: var(--text-light);
-  border: 1px solid var(--border-medium);
-}
-
-.fan-btn--prev:hover {
-  background: var(--card-bg-hover);
-}
-
-.fan-btn--next {
+.fan-dot--active {
   background: var(--primary);
-  color: #111;
-}
-
-.fan-btn--next:hover {
-  background: var(--primary-light);
-  transform: translateX(3px);
-  box-shadow: 0 4px 16px rgba(62, 207, 107, 0.35);
+  transform: scale(1.5);
 }
 
 /* ---- Responsive ---- */
 @media (max-width: 1024px) {
-  .fan-header {
-    flex-direction: column;
-    gap: 28px;
-  }
-
-  .fan-header-left {
-    padding-right: 0;
-  }
-
-  .fan-stage {
-    padding: 32px 36px 48px;
-  }
-
-  .fan-track {
-    height: 370px;
-  }
-
-  .fan-card {
-    width: 205px;
-    height: 320px;
-  }
-
-  .fan-title {
-    font-size: clamp(2rem, 4vw, 3.2rem);
-  }
+  .fan-stage { padding: 8px 0 44px; }
+  .fan-track { height: 400px; }
+  .fan-card { width: 215px; height: 340px; }
 }
 
 @media (max-width: 768px) {
-  .fan-section {
-    padding: 60px 4%;
-  }
-
-  .fan-stage {
-    padding: 24px 20px 40px;
-  }
-
-  .fan-corner {
-    width: 34px;
-    height: 34px;
-  }
-
-  .fan-track {
-    height: 300px;
-  }
-
-  .fan-card {
-    width: 162px;
-    height: 258px;
-  }
-
-  .fan-label-title {
-    font-size: 1.4rem;
-  }
-
-  .fan-label-sub {
-    font-size: 0.85rem;
-  }
-
-  .fan-desc {
-    font-size: 0.95rem;
-  }
+  .fan-section { padding: 56px 4%; }
+  .fan-track { height: 320px; }
+  .fan-card { width: 172px; height: 272px; border-radius: 18px; }
+  .fan-card-name { font-size: 1rem; }
+  .fan-card-desc { display: none; }
+  .fan-card-label { bottom: 44px; padding: 0 16px; }
+  .fan-card-cta { bottom: 14px; left: 16px; }
+  .fan-title { font-size: 1.6rem; }
+  .fan-hint { font-size: 0.62rem; }
 }
 
 @media (max-width: 480px) {
-  .fan-section {
-    padding: 48px 4%;
-  }
-
-  .fan-stage {
-    padding: 18px 14px 34px;
-  }
-
-  .fan-corner {
-    width: 26px;
-    height: 26px;
-    border-width: 2px;
-  }
-
-  .fan-track {
-    height: 250px;
-  }
-
-  .fan-card {
-    width: 136px;
-    height: 216px;
-    border-radius: 14px;
-  }
-
-  .fan-label-title {
-    font-size: 1.15rem;
-  }
-
-  .fan-label {
-    margin-bottom: 16px;
-    min-height: 56px;
-  }
-
-  .fan-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .fan-track {
-    height: 220px;
-  }
-
-  .fan-card {
-    width: 118px;
-    height: 188px;
-    border-radius: 12px;
-  }
+  .fan-track { height: 264px; }
+  .fan-card { width: 144px; height: 228px; border-radius: 14px; }
+  .fan-card-name { font-size: 0.9rem; }
+  .fan-card-label { bottom: 38px; padding: 0 12px; }
+  .fan-card-cta { bottom: 12px; left: 12px; }
 }

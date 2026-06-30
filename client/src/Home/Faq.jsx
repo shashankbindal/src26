@@ -10,6 +10,18 @@ const faqData = [
   {
     question: "Who can participate in SRC 2026?",
     answer: "Undergraduate and postgraduate students from chemical engineering and allied fields across India are welcome to participate in SRC 2026."
+  },
+  {
+    question: "How do I register?",
+    answer: "Head to the Registration page, pick the event(s) you want to compete in, fill in your (or your team's) details, and submit — you'll see your registration status and any pending steps right there."
+  },
+  {
+    question: "What events can I take part in?",
+    answer: "SRC 2026 features five flagship events — Chem-E-Car, Chem-E-Jeopardy, Technical Paper Presentation, Poster Presentation, and a K-12 outreach track. Visit the Events page for full details and chairs for each."
+  },
+  {
+    question: "Who do I contact for help?",
+    answer: "Reach out to the AIChE RGIPT Student Chapter at aiche@rgipt.ac.in for any questions about registration, events, or logistics."
   }
 ];
 

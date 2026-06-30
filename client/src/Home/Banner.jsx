@@ -1,7 +1,26 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import './Banner.css';
+
+const CalendarIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
+const PinIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+  </svg>
+);
+
+const BadgeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="8" r="6" /><path d="M9 13.5 7 22l5-3 5 3-2-8.5" />
+  </svg>
+);
 
 /* ---- Constellation canvas ---- */
 function ParticleCanvas() {
@@ -147,12 +166,25 @@ const Banner = () => {
       delay: 0.9,
       onComplete: () => setParallaxReady(true),
     })
+    .from('.banner-eyebrow', {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+    }, '-=0.3')
     .from('.char', {
       y: 150,
       opacity: 0,
       stagger: 0.1,
       duration: 1.2,
       ease: 'power4.out',
+    }, '-=0.3')
+    .from(['.banner-tagline', '.banner-info-strip', '.banner-cta-row'], {
+      y: 24,
+      opacity: 0,
+      stagger: 0.12,
+      duration: 0.9,
+      ease: 'power3.out',
     }, '-=0.5')
   }, { scope: containerRef })
 
@@ -169,6 +201,11 @@ const Banner = () => {
       </div>
       <ParticleCanvas />
       <div className="banner-content">
+        <span className="banner-eyebrow">
+          <span className="banner-eyebrow-dot" aria-hidden="true" />
+          AIChE India SRC 2026
+        </span>
+
         <h1 className="banner-title">
           {title.split('').map((char, i) => (
             <span key={i} className="char-wrapper">
@@ -176,6 +213,26 @@ const Banner = () => {
             </span>
           ))}
         </h1>
+
+        <p className="banner-tagline">Engineering the Decarbonization Revolution</p>
+
+        <div className="banner-info-strip">
+          <span className="banner-info-item"><CalendarIcon /> 21&ndash;23 August 2026</span>
+          <span className="banner-info-divider" aria-hidden="true" />
+          <span className="banner-info-item"><PinIcon /> RGIPT, Rae Bareli</span>
+          <span className="banner-info-divider" aria-hidden="true" />
+          <span className="banner-info-item"><BadgeIcon /> AIChE RGIPT Student Chapter</span>
+        </div>
+
+        <div className="banner-cta-row">
+          <Link to="/register" className="banner-cta-primary" data-magnetic>
+            Register Now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+          </Link>
+          <Link to="/events" className="banner-cta-secondary" data-magnetic>
+            Explore Events
+          </Link>
+        </div>
       </div>
       <ScrollCue />
     </div>

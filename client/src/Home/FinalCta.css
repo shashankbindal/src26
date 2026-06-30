@@ -1,0 +1,118 @@
+/* ===== CLOSING CTA — rounded card floating on the page canvas, same
+   language as the other hero/feature cards site-wide ===== */
+.final-cta-wrapper {
+  width: 100%;
+  padding: 60px 5% 100px;
+  background: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+}
+
+.final-cta-band {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  padding: 80px 6%;
+  background: var(--primary);
+  border-radius: var(--radius-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+/* Blueprint-style crosshair marks — same motif as the footer's corner dots,
+   threaded back up through the page for visual continuity. */
+.final-cta-mark {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+}
+.final-cta-mark::before, .final-cta-mark::after {
+  content: '';
+  position: absolute;
+  background-color: var(--panel-text);
+  opacity: 0.25;
+}
+.final-cta-mark::before { top: 6px; left: 0; width: 14px; height: 1px; }
+.final-cta-mark::after { top: 0; left: 6px; width: 1px; height: 14px; }
+.final-cta-mark-tl { top: 36px; left: 36px; }
+.final-cta-mark-br { bottom: 36px; right: 36px; }
+
+.final-cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.final-cta-content.visible { opacity: 1; transform: translateY(0); }
+
+.final-cta-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--panel-text-muted);
+  margin-bottom: 18px;
+}
+
+.final-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--panel-text);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.final-cta-desc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--panel-text-muted);
+  margin-bottom: 36px;
+}
+
+.final-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel-text);
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 16px 36px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.final-cta-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.final-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+.final-cta-btn:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .final-cta-wrapper { padding: 40px 5% 64px; }
+  .final-cta-band { padding: 56px 6%; border-radius: var(--radius-lg); }
+  .final-cta-mark-tl { top: 20px; left: 20px; }
+  .final-cta-mark-br { bottom: 20px; right: 20px; }
+}

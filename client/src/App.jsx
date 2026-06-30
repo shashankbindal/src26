@@ -7,6 +7,7 @@ import Navbar from "./shared/Navbar.jsx";
 import Footer from "./shared/Footer.jsx";
 import SmoothScroller from "./shared/SmoothScroller.jsx";
 import ScrollToTop from "./shared/ScrollToTop.jsx";
+import SectionRail from "./shared/SectionRail.jsx";
 
 /* Auth */
 import { AuthProvider } from "./context/AuthContext.jsx";
@@ -125,6 +126,7 @@ const AppContent = () => {
       <div className="bg-glow-orb orb-2" />
       <div className="bg-glow-orb orb-3" />
       <ScrollToTop />
+      <SectionRail />
 
       {!hideNavFooter && <Navbar />}
 

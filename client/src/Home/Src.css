@@ -20,7 +20,7 @@
 }
 .ref-block.visible { opacity: 1; }
 
-.block-right-image { transform: translateY(40px); }
+.block-right-image { transform: translateY(40px); flex-direction: row-reverse; }
 .block-right-image.visible { transform: translateY(0); }
 .block-left-image  { transform: translateY(40px); }
 .block-left-image.visible  { transform: translateY(0); }
@@ -140,27 +140,47 @@
 
 /* ---- Responsive ---- */
 @media (max-width: 1024px) {
-  .ref-block { flex-direction: column; gap: 60px; }
-  .block-left-image { flex-direction: column-reverse; }
-  .ref-text-content { padding: 0 5%; max-width: 100%; }
-  .ref-image-wrapper { width: 100%; height: 320px; }
-  .img-right { border-top-left-radius: 100px; border-bottom-left-radius: 100px; }
-  .img-left  { border-top-right-radius: 100px; border-bottom-right-radius: 100px; }
+  .ref-block { 
+    display: block; 
+  }
+  .ref-block::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .ref-text-content { padding: 0 4%; max-width: 100%; display: block; }
+  .ref-image-wrapper { 
+    width: 35%;
+    height: 360px; 
+    margin-bottom: 20px;
+  }
+  .img-right { 
+    float: right; 
+    margin-left: 20px; 
+    border-top-left-radius: 100px; 
+    border-bottom-left-radius: 100px; 
+  }
+  .img-left { 
+    float: left; 
+    margin-right: 20px; 
+    border-top-right-radius: 100px; 
+    border-bottom-right-radius: 100px; 
+  }
 }
 
 @media (max-width: 768px) {
   .src-section-ref { gap: 80px; padding: 60px 0; }
-  .ref-image-wrapper { height: 260px; }
+  .ref-image-wrapper { width: 45%; height: 320px; }
   .ref-title { font-size: clamp(1.5rem, 5vw, 2.2rem); margin-bottom: 20px; }
-  .img-right { border-top-left-radius: 60px; border-bottom-left-radius: 60px; }
-  .img-left  { border-top-right-radius: 60px; border-bottom-right-radius: 60px; }
+  .img-right { border-top-left-radius: 60px; border-bottom-left-radius: 60px; margin-left: 15px; }
+  .img-left  { border-top-right-radius: 60px; border-bottom-right-radius: 60px; margin-right: 15px; }
 }
 
 @media (max-width: 480px) {
   .src-section-ref { gap: 56px; padding: 40px 0; }
-  .ref-image-wrapper { height: 200px; }
+  .ref-image-wrapper { width: 50%; height: 260px; }
   .ref-subtitle { font-size: 0.75rem; gap: 10px; }
   .ref-line { width: 28px; }
-  .img-right { border-top-left-radius: 36px; border-bottom-left-radius: 36px; }
-  .img-left  { border-top-right-radius: 36px; border-bottom-right-radius: 36px; }
+  .img-right { border-top-left-radius: 36px; border-bottom-left-radius: 36px; margin-left: 10px; }
+  .img-left  { border-top-right-radius: 36px; border-bottom-right-radius: 36px; margin-right: 10px; }
 }

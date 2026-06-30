@@ -54,7 +54,7 @@ const Events = () => {
           </h2>
         </div>
         <div className="fan-header-right" style={{ justifyContent: 'center', alignItems: 'flex-end' }}>
-          <Link to="/events" className="fan-explore-btn">View All Events</Link>
+          <Link to="/events" className="fan-explore-btn" data-magnetic>View All Events</Link>
         </div>
       </div>
 

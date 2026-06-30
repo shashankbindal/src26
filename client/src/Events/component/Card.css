@@ -8,10 +8,11 @@
   border: 1px solid var(--border-medium);
   margin-bottom: 56px;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  perspective: 1400px;
 }
 
 .competition-card-container:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   box-shadow: var(--shadow-xl), var(--shadow-glow-green);
   border-color: var(--border-glow);
 }

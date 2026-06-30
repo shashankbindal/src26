@@ -89,6 +89,30 @@
   overflow: hidden;
   border-radius: var(--radius-xl);
   background: var(--bg-secondary);
+  position: relative;
+  perspective: 1000px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.team-image-container:hover {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  box-shadow: var(--shadow-xl), 0 0 40px color-mix(in srgb, var(--team-color, var(--primary)) 18%, transparent);
+}
+
+/* Wipe-reveal overlay — same scaleX collapse pattern used on the homepage */
+.team-image-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 2;
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1) 0.3s;
+  pointer-events: none;
+}
+.team-image-container.visible::before {
+  transform: scaleX(0);
 }
 
 .team-image-placeholder {

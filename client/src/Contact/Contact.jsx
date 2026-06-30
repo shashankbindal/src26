@@ -13,6 +13,8 @@ const Contact = () => {
   const [formRef, formVisible] = useReveal(0.1);
   const [mapRef, mapVisible] = useReveal(0.1);
   const [placesRef, placesVisible] = useReveal(0.1);
+  const [place1Ref, place1Visible] = useReveal(0.2);
+  const [place2Ref, place2Visible] = useReveal(0.2);
 
   return (
     <>
@@ -94,7 +96,7 @@ const Contact = () => {
                 <textarea className="form-textarea" placeholder="Write your message"></textarea>
               </div>
 
-              <button type="submit" className="submit-btn">Send Message</button>
+              <button type="submit" className="submit-btn" data-magnetic>Send Message</button>
             </form>
           )}
         </div>
@@ -128,7 +130,7 @@ const Contact = () => {
           <div className="timeline-center-line"></div>
           
           {/* Ayodhya (Right Side) */}
-          <div className="timeline-item right">
+          <div ref={place1Ref} className={`timeline-item right ${place1Visible ? 'in-view' : ''}`}>
             <div className="timeline-dot"></div>
             <div className="timeline-content">
               <div className="timeline-text">
@@ -143,7 +145,7 @@ const Contact = () => {
           </div>
 
           {/* Banaras (Left Side) */}
-          <div className="timeline-item left">
+          <div ref={place2Ref} className={`timeline-item left ${place2Visible ? 'in-view' : ''}`}>
             <div className="timeline-dot"></div>
             <div className="timeline-content">
               <div className="timeline-text">

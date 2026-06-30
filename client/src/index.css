@@ -202,6 +202,9 @@ html.lenis, html.lenis body { height: auto; }
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%; /* scale-based — JS sets transform: scaleX(0–1) */
+  transform: scaleX(0);
+  transform-origin: left;
   height: 3px;
   background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--primary-light) 100%);
   z-index: 10000;

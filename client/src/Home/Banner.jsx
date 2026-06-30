@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import './Banner.css';
@@ -89,19 +89,63 @@ function ParticleCanvas() {
   return <canvas ref={cvs} className="banner-particles" />
 }
 
+/* ---- Cursor-driven parallax for the background layer ---- */
+function useBgParallax(wrapRef, ready) {
+  useEffect(() => {
+    if (!ready) return
+    const wrap = wrapRef.current
+    if (!wrap) return
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    if (reduceMotion || !finePointer) return
+
+    const container = wrap.closest('.banner-container')
+    let raf = null
+
+    const onMove = (e) => {
+      if (raf) return
+      raf = requestAnimationFrame(() => {
+        raf = null
+        const rect = container.getBoundingClientRect()
+        const px = (e.clientX - rect.left) / rect.width  - 0.5 // -0.5 .. 0.5
+        const py = (e.clientY - rect.top)  / rect.height - 0.5
+        /* Subtle depth shift — background drifts opposite the cursor */
+        wrap.style.transform = `translate3d(${px * -22}px, ${py * -14}px, 0)`
+      })
+    }
+
+    const onLeave = () => {
+      wrap.style.transform = 'translate3d(0, 0, 0)'
+    }
+
+    container.addEventListener('mousemove', onMove, { passive: true })
+    container.addEventListener('mouseleave', onLeave)
+
+    return () => {
+      if (raf) cancelAnimationFrame(raf)
+      container.removeEventListener('mousemove', onMove)
+      container.removeEventListener('mouseleave', onLeave)
+    }
+  }, [wrapRef, ready])
+}
+
 /* ---- Banner ---- */
 const Banner = () => {
   const containerRef = useRef()
+  const bgWrapRef     = useRef()
+  const [parallaxReady, setParallaxReady] = useState(false)
 
   useGSAP(() => {
     const tl = gsap.timeline()
 
-    tl.from('.banner-bg', {
+    tl.from('.banner-bg-wrap', {
       scale: 1.1,
       opacity: 0,
       duration: 1.5,
       ease: 'expo.inOut',
       delay: 0.9,
+      onComplete: () => setParallaxReady(true),
     })
     .from('.char', {
       y: 150,
@@ -112,11 +156,17 @@ const Banner = () => {
     }, '-=0.5')
   }, { scope: containerRef })
 
+  useBgParallax(bgWrapRef, parallaxReady)
+
   const title = 'VIPLAV'
 
   return (
     <div className="banner-container" ref={containerRef}>
-      <img className="banner-bg" src="/bg.png" alt="Background" fetchpriority="high" decoding="async" />
+      <div className="banner-bg-mask">
+        <div className={`banner-bg-wrap${parallaxReady ? ' parallax-ready' : ''}`} ref={bgWrapRef}>
+          <img className="banner-bg" src="/bg.png" alt="Background" fetchpriority="high" decoding="async" />
+        </div>
+      </div>
       <ParticleCanvas />
       <div className="banner-content">
         <h1 className="banner-title">
@@ -127,6 +177,38 @@ const Banner = () => {
           ))}
         </h1>
       </div>
+      <ScrollCue />
+    </div>
+  )
+}
+
+/* ---- Bouncing scroll hint — fades out once the user starts scrolling ---- */
+function ScrollCue() {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    let ticking = false
+
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const fade = Math.max(0, 1 - window.scrollY / 220)
+        el.style.opacity = fade
+        ticking = false
+      })
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return (
+    <div className="banner-scroll-cue" ref={ref} aria-hidden="true">
+      <span className="scroll-cue-label">Scroll</span>
+      <span className="scroll-cue-stem"><span className="scroll-cue-dot" /></span>
     </div>
   )
 }

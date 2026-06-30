@@ -1,14 +1,16 @@
 import React, { useRef } from 'react';
 import { useReveal } from '../../Home/useReveal.js';
 import { useStaggerLines } from '../../Home/useStaggerLines.js';
+import { useTilt } from '../../shared/useTilt.js';
 import './Card.css';
 
 const Card = ({ event, index }) => {
   const isEven = index % 2 !== 0;
   const team = [...(event.chairs || []), ...(event.coordinators || [])];
-  
+
   const [cardRef, cardVisible] = useReveal(0.1);
   const textRef = useStaggerLines('p, ul', 0.15);
+  const { onTiltMove, onTiltLeave } = useTilt(3.5); // subtle — these are large content cards
 
   // Assign brutalist colors based on index
   const colors = ["#00a651", "#f5eedc", ];
@@ -16,10 +18,12 @@ const Card = ({ event, index }) => {
   const textColor = bgColor === "#f5eedc" ? "#000" : "#fff";
 
   return (
-    <div 
-      ref={cardRef} 
+    <div
+      ref={cardRef}
       className={`competition-card-container ${isEven ? 'even' : 'odd'} reveal-scale ${cardVisible ? 'visible' : ''}`}
       style={{ backgroundColor: bgColor, color: textColor, borderColor: '#000' }}
+      onMouseMove={onTiltMove}
+      onMouseLeave={onTiltLeave}
     >
       <div className="competition-card-image">
         <img
@@ -46,7 +50,7 @@ const Card = ({ event, index }) => {
           </div>
         )}
 
-        <a href={event.rulebookLink || "#"} className="competition-rulebook-btn" target="_blank" rel="noreferrer">
+        <a href={event.rulebookLink || "#"} className="competition-rulebook-btn" target="_blank" rel="noreferrer" data-magnetic>
           Download Rulebook
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>

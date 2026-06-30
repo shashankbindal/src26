@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { bentoCards } from './teamsData';
 import { useReveal } from '../Home/useReveal';
 import { useStaggerLines } from '../Home/useStaggerLines';
+import { useTilt } from '../shared/useTilt.js';
 import '../Home/animations.css';
 import './TeamProfile.css';
 
@@ -13,6 +14,7 @@ const TeamProfile = () => {
   const [headerRef, headerVisible] = useReveal(0.1);
   const [leftRef, leftVisible] = useReveal(0.1);
   const [rightRef, rightVisible] = useReveal(0.1);
+  const { onTiltMove, onTiltLeave } = useTilt(4);
 
   const staggerDescRef = useStaggerLines('.section-text', 0.1);
   const staggerList1Ref = useStaggerLines('li', 0.1);
@@ -36,7 +38,7 @@ const TeamProfile = () => {
     return (
       <div className="team-profile-not-found">
         <h2>Team not found</h2>
-        <button className="back-btn" onClick={handleReturn}>RETURN TO HOME</button>
+        <button className="back-btn" onClick={handleReturn} data-magnetic>RETURN TO HOME</button>
       </div>
     );
   }
@@ -44,7 +46,7 @@ const TeamProfile = () => {
   return (
     <div className="team-profile-container" style={{ '--team-color': team.color || '#00a651' }}>
       <div ref={headerRef} className={`team-profile-header reveal-scale ${headerVisible ? 'visible' : ''}`}>
-        <button className="back-btn" onClick={handleReturn}>
+        <button className="back-btn" onClick={handleReturn} data-magnetic>
           RETURN TO HOME
         </button>
       </div>
@@ -60,7 +62,11 @@ const TeamProfile = () => {
           </h1>
           <p className="team-profile-subtitle">2026 &nbsp;&nbsp; The minds behind SRC '26.</p>
 
-          <div className="team-image-container">
+          <div
+            className={`team-image-container ${leftVisible ? 'visible' : ''}`}
+            onMouseMove={onTiltMove}
+            onMouseLeave={onTiltLeave}
+          >
             <div className="team-image-placeholder">
               <h2 style={team.name.length > 18 ? { fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' } : {}}>
                 {team.name.toUpperCase()}

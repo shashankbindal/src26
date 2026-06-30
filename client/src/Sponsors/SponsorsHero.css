@@ -19,6 +19,19 @@
   background-position: center;
   z-index: 0;
   filter: brightness(0.65) grayscale(10%);
+  transform-origin: center center;
+  will-change: transform;
+  animation: sponsorsHeroDrift 28s ease-in-out infinite;
+}
+
+@keyframes sponsorsHeroDrift {
+  0%   { transform: scale(1.04) translate3d(0%, 0%, 0); }
+  50%  { transform: scale(1.1) translate3d(1.2%, -1%, 0); }
+  100% { transform: scale(1.04) translate3d(0%, 0%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsors-hero-bg { animation: none; }
 }
 
 .sponsors-hero-fade {

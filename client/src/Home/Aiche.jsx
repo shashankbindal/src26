@@ -2,6 +2,7 @@ import React from 'react'
 import { useReveal } from './useReveal.js'
 import { useTextScramble } from './useTextScramble.js'
 import { useRevealWords } from './useRevealWords.js'
+import CountUp from '../shared/CountUp.jsx'
 import './Aiche.css'
 
 const Aiche = () => {
@@ -22,6 +23,15 @@ const Aiche = () => {
 
       {/* Block 3 — Text Left, Image Right */}
       <div ref={block3Ref} className={`ref-block block-right-image ${block3Visible ? 'visible' : ''}`}>
+        <div className="ref-image-wrapper img-right">
+          <img
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop"
+            alt="Global tech network"
+            className="ref-img"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         <div className="ref-text-content">
           <div className="ref-subtitle">
             <span className="ref-line" />
@@ -44,15 +54,21 @@ const Aiche = () => {
               chemical engineering across core industries and emerging fields.
             </p>
           </div>
-        </div>
-        <div className="ref-image-wrapper img-right">
-          <img
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop"
-            alt="Global tech network"
-            className="ref-img"
-            loading="lazy"
-            decoding="async"
-          />
+
+          <div className="ref-stats-row">
+            <div className="ref-stat">
+              <span className="ref-stat-num"><CountUp value={60000} suffix="+" /></span>
+              <span className="ref-stat-label">Members</span>
+            </div>
+            <div className="ref-stat">
+              <span className="ref-stat-num"><CountUp value={110} suffix="+" /></span>
+              <span className="ref-stat-label">Countries</span>
+            </div>
+            <div className="ref-stat">
+              <span className="ref-stat-num"><CountUp value={14} /></span>
+              <span className="ref-stat-label">Global Regions</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -89,7 +105,7 @@ const Aiche = () => {
             <p>
               Established in 2016, the AIChE RGIPT Student Chapter has grown into one of India's
               most distinguished and dynamic student chapters, building a strong community of
-              over 500 members over the years. Based at the Rajiv Gandhi Institute of Petroleum
+              over <CountUp value={500} suffix="+" /> members over the years. Based at the Rajiv Gandhi Institute of Petroleum
               Technology (RGIPT), an Institute of National Importance renowned for Chemical,
               Petroleum, and Energy Engineering, the chapter has consistently fostered
               innovation, leadership, and professional excellence.

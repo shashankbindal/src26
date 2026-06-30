@@ -19,6 +19,20 @@
   -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 90%);
   z-index: 0;
   filter: brightness(0.5) saturate(1.2);
+  transform-origin: center center;
+  will-change: transform;
+  animation: heroAmbientDrift 26s ease-in-out infinite;
+}
+
+/* Same slow zoom/pan life as the main Banner — keeps the whole site feeling cohesive */
+@keyframes heroAmbientDrift {
+  0%   { transform: scale(1.04) translate3d(0%, 0%, 0); }
+  50%  { transform: scale(1.11) translate3d(-1.4%, 1%, 0); }
+  100% { transform: scale(1.04) translate3d(0%, 0%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-hero-bg { animation: none; }
 }
 
 .team-hero-bg::after {

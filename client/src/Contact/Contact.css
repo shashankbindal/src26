@@ -356,7 +356,26 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   position: absolute;
   border: 1px solid var(--border-medium);
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* Wipe-reveal: each timeline item's photos slide a mask away once scrolled into view */
+.place-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-primary);
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform 0.9s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.timeline-item.left .place-img::after { transform-origin: right; }
+
+.timeline-item.in-view .place-img:not(.offset)::after { transition-delay: 0.1s; transform: scaleX(0); }
+.timeline-item.in-view .place-img.offset::after        { transition-delay: 0.3s; transform: scaleX(0); }
+
+.timeline-item:hover .place-img { transform: translateY(-4px); }
 
 /* Positioning images for staggered look */
 .timeline-item.right .place-img:not(.offset) {

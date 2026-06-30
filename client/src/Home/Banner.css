@@ -173,13 +173,11 @@
   /* Stacked diagonal extrusion: each step shifts down-right 2px,
      progressively lighter — gives depth without looking flat/blocky. */
   text-shadow:
-    2px 2px 0 rgba(10, 40, 20, 0.85),
-    4px 4px 0 rgba(10, 40, 20, 0.72),
-    6px 6px 0 rgba(10, 40, 20, 0.58),
-    8px 8px 0 rgba(10, 40, 20, 0.42),
-    10px 10px 0 rgba(10, 40, 20, 0.28),
-    12px 12px 0 rgba(10, 40, 20, 0.14),
-    0 20px 40px rgba(0, 0, 0, 0.55);
+    2px 2px 0 rgba(10, 40, 20, 0.22),
+    4px 4px 0 rgba(10, 40, 20, 0.18),
+    6px 6px 0 rgba(10, 40, 20, 0.13),
+    8px 8px 0 rgba(10, 40, 20, 0.09),
+    0 16px 36px rgba(0, 0, 0, 0.3);
   margin: 0;
   padding: 0;
   font-family: var(--font-display);
@@ -366,10 +364,11 @@
     font-size: 5rem;
   }
 
-  .banner-tagline { font-size: 1rem; }
-  .banner-eyebrow { font-size: 0.7rem; padding: 7px 16px; }
-  .banner-info-item { font-size: 0.74rem; }
-  .banner-cta-primary, .banner-cta-secondary { padding: 13px 26px; font-size: 0.92rem; }
+  .banner-tagline { font-size: 0.95rem; }
+  .banner-eyebrow { font-size: 0.65rem; padding: 6px 14px; }
+  .banner-info-item { font-size: 0.7rem; }
+  .banner-cta-primary { padding: 11px 22px; font-size: 0.85rem; }
+  .banner-cta-secondary { padding: 10px 20px; font-size: 0.85rem; }
 
   .banner-bg {
     object-position: top;

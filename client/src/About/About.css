@@ -110,10 +110,11 @@
 .ref-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 500;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
-  line-height: 1.2;
-  margin-bottom: 30px;
+  line-height: 1.1;
+  margin-bottom: 28px;
   opacity: 0; /* GSAP takes over on reveal */
 }
 
@@ -152,9 +153,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 10s ease;
+  /* Warm, brand-consistent tone across all About section photos */
+  filter: saturate(1.12) brightness(0.96) contrast(1.02);
+  transition: transform 10s ease, filter 0.4s ease;
 }
-.ref-block:hover .ref-img { transform: scale(1.05); }
+.ref-block:hover .ref-img { transform: scale(1.05); filter: saturate(1.2) brightness(1) contrast(1.02); }
 
 /* ===== ANIMATED STAT ROW ===== */
 .ref-stats-row {

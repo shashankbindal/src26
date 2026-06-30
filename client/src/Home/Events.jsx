@@ -4,11 +4,11 @@ import { useReveal } from './useReveal.js'
 import './Events.css'
 
 const eventData = [
-  { id: 1, title: "Chem-E-Jeopardy", desc: "Chemical Engineering Trivia", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5jUsij8b-x-PBqn3yMZbAYUwfyACiF3GPAw&s" },
-  { id: 2, title: "Chem-E-Car", desc: "Chemical Energy Vehicles", img: "https://www.aiche.org/sites/default/files/images/conference/event/23370477461_f16f1dd228_z.jpg" },
-  { id: 3, title: "Poster Presentation", desc: "Research & Technical Projects", img: "https://images.unsplash.com/photo-1515603403036-f3d35f75ca52?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-  { id: 4, title: "Paper Presentation", desc: "Emerging Trends & Analysis", img: "https://images.unsplash.com/photo-1771344488060-f6b32a503b34?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-  { id: 5, title: "K-12 STEM", desc: "Inspiring the Next Generation", img: "https://learningliftoff.com/wp-content/uploads/2023/01/pexels-artem-podrez-6941450-1536x864.jpg.webp" }
+  { id: 1, title: "Chem-E-Jeopardy", desc: "Test your chemical engineering knowledge", img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&auto=format&fit=crop&q=80" },
+  { id: 2, title: "Chem-E-Car", desc: "Design & race a chemical-powered car", img: "https://www.aiche.org/sites/default/files/images/conference/event/23370477461_f16f1dd228_z.jpg" },
+  { id: 3, title: "Poster Presentation", desc: "Showcase your research to industry experts", img: "https://images.unsplash.com/photo-1515603403036-f3d35f75ca52?q=80&w=1170&auto=format&fit=crop" },
+  { id: 4, title: "Paper Presentation", desc: "Present your technical research & findings", img: "https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=1170&auto=format&fit=crop" },
+  { id: 5, title: "K-12 STEM", desc: "Inspiring the next generation of engineers", img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=80" }
 ]
 
 const TX_MAP = [0, 105, 190] // Percentages of width

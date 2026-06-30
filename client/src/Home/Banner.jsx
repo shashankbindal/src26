@@ -85,7 +85,7 @@ const Banner = () => {
       <div className="hero-right">
         <div className="hero-image-wrap">
           <img
-            src="/hero-refinery.jpeg"
+            src="/hero-refinery.png"
             alt="Petroleum refinery at golden sunset"
             className="hero-campus-img"
             fetchpriority="high"

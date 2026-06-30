@@ -276,12 +276,18 @@
     padding: 8px 16px;
   }
 
-  .nav-menu { 
-    display: none; 
+  .nav-menu {
+    display: none;
   }
 
-  .navbar-logo-img { 
-    height: 32px; 
+  /* Secondary partner logos clutter a narrow mobile bar — keep just the
+     primary RGIPT mark plus the essential controls (theme/user/menu). */
+  .nav-brand-right .navbar-logo-img {
+    display: none;
+  }
+
+  .navbar-logo-img {
+    height: 32px;
   }
 
   .navbar-user-btn {

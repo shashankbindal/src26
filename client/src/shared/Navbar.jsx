@@ -41,6 +41,7 @@ const ThemeToggle = () => {
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
   { label: 'Registration', href: '/register' },
   // { label: 'Accommodation', href: '/accommodation' },

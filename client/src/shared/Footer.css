@@ -173,20 +173,26 @@
 }
 
 @media (max-width: 900px) {
-  .footer-card { padding: 80px 40px 40px; }
-  .footer-giant-text { font-size: 20vw; }
+  .footer-card { padding: 80px 40px 56px; }
+  .footer-giant-text { font-size: 18vw; }
 }
 
 @media (max-width: 600px) {
-  .footer-card { padding: 60px 24px 30px; }
+  .footer-card { padding: 48px 24px 60px; }
   .dot-tl { top: 20px; left: 20px; }
   .dot-tr { top: 20px; right: 20px; }
   .dot-bl { bottom: 20px; left: 20px; }
   .dot-br { bottom: 20px; right: 20px; }
-  .footer-top { flex-direction: column; gap: 40px; margin-bottom: 60px; }
-  .footer-right { align-items: flex-start; text-align: left; }
-  .footer-links-container { align-items: flex-start; }
-  .footer-link-row { justify-content: flex-start; gap: 20px; }
+  .footer-top { flex-direction: column; gap: 28px; margin-bottom: 40px; }
+  .footer-left { gap: 14px; }
+  .footer-right { align-items: flex-start; text-align: left; gap: 20px; }
+  .footer-links-container { align-items: flex-start; gap: 10px; }
+  .footer-link-row {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: start;
+    gap: 12px 28px;
+  }
   .footer-heading { font-size: 1.8rem; }
-  .footer-giant-text { font-size: 22vw; }
+  .footer-giant-text { font-size: 17vw; padding-bottom: 4px; }
 }

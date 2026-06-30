@@ -90,24 +90,24 @@
   --bg-glass: rgba(245, 234, 212, 0.88);
   --bg-dark: #D4C49E;
 
-  /* Primary — deep warm charcoal (industrial structure silhouettes) */
-  --primary: #2B2520;
-  --primary-dark: #1A1510;
-  --primary-light: #4A3E36;
-  --primary-glow: rgba(43, 37, 32, 0.18);
+  /* Primary — warm amber (dominant sunset action color for buttons/CTAs) */
+  --primary: #C8791A;
+  --primary-dark: #A46015;
+  --primary-light: #E09030;
+  --primary-glow: rgba(200, 121, 26, 0.18);
   --primary-glow-strong: rgba(200, 121, 26, 0.35);
 
-  /* Accent — warm amber (dominant sunset orange from image sky) */
-  --accent: #C8791A;
-  --accent-light: #E09030;
-  --accent-dark: #A46015;
-  --accent-glow: rgba(200, 121, 26, 0.28);
+  /* Accent — muted steel blue (image's cool sky tones, for secondary accents) */
+  --accent: #7A9DB8;
+  --accent-light: #A0BCCC;
+  --accent-dark: #5A7E98;
+  --accent-glow: rgba(122, 157, 184, 0.28);
 
-  /* Text — warm near-black and brown tones from industrial scene */
-  --text-primary: #1C1916;
+  /* Text — deep warm charcoal (industrial silhouettes) as the readable text color */
+  --text-primary: #2B2520;
   --text-secondary: #5C4A38;
   --text-muted: #8B7060;
-  --text-light: #1C1916;
+  --text-light: #2B2520;
 
   /* Borders — warm charcoal tints */
   --border-light: rgba(43, 37, 32, 0.08);
@@ -130,8 +130,8 @@
   --nav-bg-scrolled: rgba(238, 224, 194, 0.78);
   --nav-border: rgba(43, 37, 32, 0.12);
   --nav-border-scrolled: rgba(43, 37, 32, 0.22);
-  --nav-link-color: #1C1916;
-  --nav-icon-color: #1C1916;
+  --nav-link-color: #2B2520;
+  --nav-icon-color: #2B2520;
   --nav-user-bg: rgba(43, 37, 32, 0.08);
   --nav-user-border: rgba(43, 37, 32, 0.18);
   --nav-dropdown-bg: rgba(245, 234, 212, 0.98);

@@ -294,54 +294,36 @@
     height: 28px;
   }
 
-  /* All three icon buttons: equal size, no background, just the icon */
-  .navbar-user-btn {
-    width: 28px;
-    height: 28px;
-    background: none;
-    border: none;
-    box-shadow: none;
-    margin-left: 2px;
-    padding: 0;
+  /* All three icon buttons: exactly equal 28px, flat — no backgrounds, no borders */
+  .navbar-user-btn,
+  .theme-toggle-btn,
+  .mobile-menu-icon {
+    width: 28px !important;
+    height: 28px !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-left: 6px !important;
+    flex-shrink: 0;
   }
 
-  .navbar-user-btn svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .theme-toggle-btn {
-    width: 28px;
-    height: 28px;
-    background: none;
-    border: none;
-    box-shadow: none;
-    margin-left: 2px;
-  }
-
+  .navbar-user-btn svg,
   .theme-toggle-btn svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .nav-brand {
-    gap: 4px;
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .mobile-menu-icon {
     display: flex;
-    width: 28px;
-    height: 28px;
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin-left: 4px;
   }
 
   .mobile-menu-icon span {
     width: 18px;
+    background: var(--nav-icon-color);
   }
+
+  .nav-brand { gap: 4px; }
 
   .mobile-nav-overlay {
     display: flex;

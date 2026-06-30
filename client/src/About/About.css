@@ -257,9 +257,21 @@
   .img-left  { border-top-right-radius: 60px; border-bottom-right-radius: 60px; margin-right: 15px; }
 }
 
+/* On small phones fully clear floats — image stacks above text */
+@media (max-width: 600px) {
+  .ref-image-wrapper {
+    float: none !important;
+    width: 100%;
+    height: 220px;
+    border-radius: 12px !important;
+    margin: 0 0 20px 0 !important;
+  }
+  .ref-text-content { padding: 0 5%; }
+  .ref-subtitle { margin-top: 4px; }
+}
+
 @media (max-width: 480px) {
   .src-section-ref { gap: 56px; padding: 16px 0 40px; }
-  .ref-image-wrapper { width: 50%; height: 260px; }
   .ref-subtitle { font-size: 0.75rem; gap: 10px; }
   .ref-line { width: 28px; }
   .img-right { border-top-left-radius: 36px; border-bottom-left-radius: 36px; margin-left: 10px; }

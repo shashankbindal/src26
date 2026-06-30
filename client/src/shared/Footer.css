@@ -133,35 +133,40 @@
   text-shadow: 0 0 15px rgba(62, 207, 107, 0.3);
 }
 
-/* ===== GIANT INTERACTIVE TEXT — CURSOR-TRACKED GLOW ===== */
+/* ===== GIANT WORDMARK — outlined by default (works everywhere, no JS needed);
+   gradient cursor-tracking is an enhancement layered on for mouse-capable desktops only ===== */
 .footer-giant-text {
   font-family: var(--font-display);
   font-size: 18vw;
   font-weight: 700;
   text-align: center;
   line-height: 0.8;
-  color: rgba(232, 236, 233, 0.02);
+  color: transparent;
   margin-top: auto;
   user-select: none;
   z-index: 1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   padding-bottom: 20px;
-  -webkit-text-stroke: 1px rgba(62, 207, 107, 0.08);
-  background-image: radial-gradient(
-    circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    var(--primary) 0%,
-    rgba(62, 207, 107, 0.15) 30%,
-    rgba(232, 236, 233, 0.02) 70%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  transition: all 0.3s ease;
+  -webkit-text-stroke: 1.5px var(--line-overlay);
+  transition: -webkit-text-stroke 0.3s ease;
 }
 
-.footer-giant-text:hover {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(62, 207, 107, 0.15);
+@media (hover: hover) and (pointer: fine) {
+  .footer-giant-text {
+    background-image: radial-gradient(
+      circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      var(--primary) 0%,
+      var(--primary-glow) 30%,
+      transparent 70%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .footer-giant-text:hover {
+    -webkit-text-stroke: 1.5px var(--primary-glow-strong);
+  }
 }
 
 @media (max-width: 900px) {

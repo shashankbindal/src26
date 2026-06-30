@@ -1,0 +1,217 @@
+/* ===== SCROLL-PINNED ABOUT CARDS ===== */
+
+/* Outer section provides scroll distance: 4 cards × viewport height */
+.sc-outer {
+  height: 400vh;
+  position: relative;
+}
+
+/* Pinned container — stays in view while outer scrolls */
+.sc-inner {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+/* Stacked card deck — all cards absolutely positioned on top of each other */
+.sc-stack {
+  position: relative;
+  width: min(90vw, 1080px);
+  height: min(72vh, 580px);
+}
+
+/* ---- Individual card ---- */
+.sc-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background: var(--bg-secondary);
+  visibility: hidden; /* GSAP autoAlpha controls this */
+}
+
+/* First card starts visible */
+.sc-card:first-child { visibility: visible; }
+
+/* ---- Left: image ---- */
+.sc-card-image-side {
+  position: relative;
+  flex: 0 0 45%;
+  overflow: hidden;
+}
+
+.sc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08);
+  display: block;
+}
+
+.sc-img-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 70%, var(--bg-secondary) 100%);
+  pointer-events: none;
+}
+
+/* ---- Right: text ---- */
+.sc-card-text-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 56px 48px 36px;
+  gap: 0;
+}
+
+.sc-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.sc-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0 0 20px;
+}
+
+.sc-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0 0 24px;
+  max-width: 420px;
+}
+
+.sc-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.sc-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.sc-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  background: var(--primary);
+  color: var(--panel-text);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 13px 26px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.sc-btn:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--primary-glow-strong);
+}
+
+/* ---- Card number watermark ---- */
+.sc-card-num {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: var(--border-light);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---- Progress dots (left edge) ---- */
+.sc-counter {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+.sc-counter-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-medium);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .sc-outer { height: 450vh; }
+
+  .sc-card { flex-direction: column; }
+
+  .sc-card-image-side {
+    flex: 0 0 45%;
+    border-radius: 0;
+  }
+
+  .sc-img-scrim {
+    background: linear-gradient(to bottom, transparent 70%, var(--bg-secondary) 100%);
+  }
+
+  .sc-card-text-side { padding: 24px 28px 32px; }
+  .sc-title { font-size: clamp(1.5rem, 5vw, 2.2rem); }
+  .sc-text { font-size: 0.9rem; }
+  .sc-card-num { font-size: 3rem; top: 16px; right: 18px; }
+  .sc-counter { display: none; }
+}
+
+@media (max-width: 600px) {
+  .sc-outer { height: 500vh; }
+  .sc-inner { align-items: flex-start; padding-top: 80px; }
+  .sc-stack { height: min(80vh, 640px); }
+  .sc-card-text-side { padding: 18px 20px 24px; gap: 0; }
+  .sc-title { margin-bottom: 12px; }
+  .sc-text { margin-bottom: 16px; }
+}

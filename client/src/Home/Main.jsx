@@ -3,7 +3,7 @@ import Banner from './Banner.jsx'
 import Events from './Events.jsx'
 import Sponsors from './Sponsors.jsx'
 import SectionTeaser from './SectionTeaser.jsx'
-import AboutContent from './AboutContent.jsx'
+import ScrollCards from './ScrollCards.jsx'
 import Faq from './Faq.jsx'
 import FinalCta from './FinalCta.jsx'
 import { bentoCards } from '../TeamProfile/teamsData.js'
@@ -22,7 +22,7 @@ const Main = () => {
     <>
       <div id="hero"><Banner /></div>
 
-      <div id="about"><AboutContent /></div>
+      <ScrollCards />
 
       <div id="sponsors"><Sponsors /></div>
 

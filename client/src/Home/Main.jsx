@@ -3,6 +3,7 @@ import Banner from './Banner.jsx'
 import Events from './Events.jsx'
 import Sponsors from './Sponsors.jsx'
 import SectionTeaser from './SectionTeaser.jsx'
+import AboutTeaser from './AboutTeaser.jsx'
 import Faq from './Faq.jsx'
 import FinalCta from './FinalCta.jsx'
 import { bentoCards } from '../TeamProfile/teamsData.js'
@@ -21,21 +22,7 @@ const Main = () => {
     <>
       <div id="hero"><Banner /></div>
 
-      <div id="about">
-        <SectionTeaser
-          eyebrow="About"
-          title="VIPLAV — AIChE India SRC 2026"
-          description="Hosted by the award-winning AIChE RGIPT Student Chapter, VIPLAV brings AIChE's global community of chemical engineers to RGIPT for technical competitions, research presentations, and leadership development."
-          ctaLabel="Read More"
-          ctaHref="/about"
-          stats={[
-            { value: 60000, suffix: '+', label: 'AIChE Members' },
-            { value: 110, suffix: '+', label: 'Countries' },
-            { value: 14, suffix: '', label: 'Global Regions' },
-            { display: "'26", label: 'Edition' },
-          ]}
-        />
-      </div>
+      <div id="about"><AboutTeaser /></div>
 
       <div id="sponsors"><Sponsors /></div>
 

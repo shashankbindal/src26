@@ -1,0 +1,159 @@
+/* ===== ABOUT TEASER — layered card with a curved image swoop ===== */
+.about-teaser-wrapper {
+  width: 100%;
+  padding: 80px 5%;
+  background: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+}
+
+.about-teaser-card {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  min-height: 460px;
+  display: flex;
+  align-items: stretch;
+  background: var(--primary);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.about-teaser-card.visible { opacity: 1; transform: translateY(0); }
+
+/* Soft depth blob behind the text panel — gives the flat color some life
+   without resorting to a gradient fill on the card itself. */
+.about-teaser-glow {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 50%;
+  height: 140%;
+  background: var(--accent);
+  opacity: 0.18;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.about-teaser-text {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 56px;
+}
+
+.about-teaser-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.about-teaser-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+  font-weight: 700;
+  color: var(--panel-text);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.about-teaser-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--panel-text-muted);
+  margin-bottom: 32px;
+  max-width: 440px;
+}
+
+.about-teaser-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  background: var(--panel-text);
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 30px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.about-teaser-btn svg {
+  width: 17px;
+  height: 17px;
+  transition: transform var(--transition-fast);
+}
+
+.about-teaser-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+
+.about-teaser-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ---- Image panel with the curved swoop divider ---- */
+.about-teaser-image-wrap {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  /* Same pill-curve technique already used for the About page's image blocks */
+  border-top-left-radius: 220px;
+  border-bottom-left-radius: 220px;
+  overflow: hidden;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.25);
+}
+
+.about-teaser-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 8s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-teaser-card:hover .about-teaser-image {
+    transform: scale(1.06);
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-teaser-card { min-height: 0; }
+  .about-teaser-image-wrap { border-top-left-radius: 120px; border-bottom-left-radius: 120px; }
+  .about-teaser-text { padding: 48px 40px; }
+}
+
+@media (max-width: 768px) {
+  .about-teaser-wrapper { padding: 56px 5%; }
+  .about-teaser-card { flex-direction: column; }
+  .about-teaser-image-wrap {
+    order: -1;
+    height: 220px;
+    border-radius: 0;
+    border-top-left-radius: var(--radius-xl);
+    border-top-right-radius: var(--radius-xl);
+  }
+  .about-teaser-text { padding: 40px 28px; align-items: center; text-align: center; }
+  .about-teaser-desc { max-width: 100%; }
+  .about-teaser-btn { margin: 0 auto; }
+}

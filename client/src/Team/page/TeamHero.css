@@ -60,7 +60,7 @@
   text-align: center;
   max-width: 800px;
   padding: 60px 80px;
-  background: rgba(10, 13, 11, 0.88);
+  background: rgba(10, 13, 11, 0.6);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--radius-xl);

@@ -10,6 +10,7 @@ import ScrollToTop from "./shared/ScrollToTop.jsx";
 
 /* Auth */
 import { AuthProvider } from "./context/AuthContext.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { ProtectedRoute } from "./components/ProtectedRoute.jsx";
 
 /* Public pages */
@@ -186,9 +187,11 @@ const AppContent = () => {
 export default function App() {
   return (
     <Router>
-      <AuthProvider>
-        <AppContent />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
+      </ThemeProvider>
     </Router>
   );
 }

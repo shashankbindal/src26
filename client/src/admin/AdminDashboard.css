@@ -170,7 +170,7 @@
   vertical-align: middle;
 }
 .admin-table tr:last-child td { border-bottom: none; }
-.admin-table tr:hover td { background: rgba(255,255,255,0.02); }
+.admin-table tr:hover td { background: var(--card-bg-subtle); }
 
 .admin-table td.name-cell {
   color: var(--text-primary);

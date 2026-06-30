@@ -236,13 +236,13 @@
 }
 
 .fan-btn--prev {
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--card-bg-subtle);
   color: var(--text-light);
   border: 1px solid var(--border-medium);
 }
 
 .fan-btn--prev:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--card-bg-hover);
 }
 
 .fan-btn--next {

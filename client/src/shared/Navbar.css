@@ -13,20 +13,20 @@
   max-width: 1400px;
   margin: 0 auto;
   z-index: 999;
-  background: rgba(15, 18, 20, 0.9);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   padding: 16px 40px;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--nav-border);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar.scrolled {
   top: 16px;
-  background: rgba(10, 12, 14, 0.98);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: var(--nav-bg-scrolled);
+  border-color: var(--nav-border-scrolled);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   padding: 12px 40px;
 }
@@ -58,14 +58,13 @@
   height: 48px;
   width: auto;
   object-fit: contain;
-  /* Add a soft white glow so dark logos pop against the dark navbar */
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+  filter: var(--logo-filter);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-logo-img:hover {
   transform: translateY(-3px) scale(1.05);
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+  filter: var(--logo-filter-hover);
 }
 
 .aiche-round-logo {
@@ -80,9 +79,9 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-light);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--nav-user-bg);
+  color: var(--nav-icon-color);
+  border: 1px solid var(--nav-user-border);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   margin-left: 8px;
 }
@@ -110,7 +109,7 @@
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  background: rgba(18, 18, 18, 0.95);
+  background: var(--nav-dropdown-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-md);
@@ -118,7 +117,7 @@
   min-width: 160px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-lg);
   z-index: 100;
   animation: dropdownFade 0.2s ease forwards;
 }
@@ -177,7 +176,7 @@
 
 .nav-link {
   font-family: var(--font-mono);
-  color: #e0e0e0;
+  color: var(--nav-link-color);
   text-decoration: none;
   font-size: 13px;
   font-weight: 700;
@@ -237,7 +236,7 @@
 .mobile-menu-icon span {
   width: 22px;
   height: 1.5px;
-  background: #ffffff; /* Light hamburger icon */
+  background: var(--nav-icon-color);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: var(--radius-full);
   display: block;
@@ -314,7 +313,7 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(12, 15, 14, 0.97);
+    background: var(--nav-mobile-overlay);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     flex-direction: column;
@@ -359,4 +358,50 @@
     transform: scale(1.05);
     text-shadow: 0 0 30px rgba(62, 207, 107, 0.4);
   }
+
+  .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    margin-left: 8px;
+  }
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--nav-user-bg);
+  color: var(--nav-icon-color);
+  border: 1px solid var(--nav-user-border);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--primary-glow-strong);
+}
+
+.theme-toggle-btn:hover svg {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* active press */
+.theme-toggle-btn:active {
+  transform: scale(0.92);
 }

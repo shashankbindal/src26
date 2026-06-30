@@ -1,17 +1,55 @@
-/* ===== ABOUT TEASER — full-bleed immersive section, 3D-tilted image ===== */
-.about-teaser-section {
+/* ===== ABOUT TEASER — single fused image with a translucent brand-green
+   wash (no hard-edged color block), 3D cursor tilt across the whole photo ===== */
+.about-fused-section {
   position: relative;
   width: 100%;
   min-height: 92vh;
   display: flex;
-  align-items: stretch;
-  background: var(--primary);
+  align-items: center;
   overflow: hidden;
+  perspective: 1400px;
 }
 
-/* Eases the solid green into the cream page color below it, so the cut
-   into the next section isn't a hard line. */
-.about-teaser-section::after {
+.about-fused-image-wrap {
+  position: absolute;
+  inset: -2%;
+  z-index: 0;
+}
+
+.about-fused-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-fused-section:hover .about-fused-image {
+    transform: scale(1.05) perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  }
+}
+
+/* The "fused" part — brand green dissolves into the photo via transparency
+   rather than sitting next to it as a separate block. Built from the theme's
+   own --primary so it's correct in both light and dark mode automatically. */
+.about-fused-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    var(--primary) 0%,
+    color-mix(in srgb, var(--primary) 92%, transparent) 26%,
+    color-mix(in srgb, var(--primary) 58%, transparent) 46%,
+    color-mix(in srgb, var(--primary) 18%, transparent) 64%,
+    transparent 84%
+  );
+  pointer-events: none;
+}
+
+/* Eases the photo into the cream page color below it. */
+.about-fused-section::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -20,40 +58,26 @@
   height: 140px;
   background: linear-gradient(to bottom, transparent, var(--bg-primary));
   pointer-events: none;
-  z-index: 2;
-}
-
-/* Soft depth blob behind the text panel — gives the flat color some life
-   without resorting to a gradient fill on the section itself. */
-.about-teaser-glow {
-  position: absolute;
-  top: -20%;
-  left: -12%;
-  width: 45%;
-  height: 140%;
-  background: var(--accent);
-  opacity: 0.16;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-}
-
-.about-teaser-text {
-  position: relative;
   z-index: 1;
-  flex: 0 0 44%;
+}
+
+.about-fused-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 6%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 6% 80px 8%;
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.about-teaser-section.visible .about-teaser-text { opacity: 1; transform: translateX(0); }
 
-.about-teaser-eyebrow {
+.about-fused-content > * {
+  max-width: 480px;
+}
+
+.about-fused-eyebrow {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -62,27 +86,35 @@
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.about-teaser-title {
+.about-fused-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4vw, 3.6rem);
   font-weight: 700;
   color: var(--panel-text);
   line-height: 1.15;
   margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
 }
 
-.about-teaser-desc {
+.about-fused-desc {
   font-family: var(--font-body);
   font-size: 1.08rem;
   line-height: 1.7;
   color: var(--panel-text-muted);
   margin-bottom: 36px;
-  max-width: 460px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.16s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
 }
 
-.about-teaser-btn {
+.about-fused-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -95,76 +127,51 @@
   padding: 16px 34px;
   border-radius: var(--radius-full);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-fast),
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s;
+  opacity: 0;
+  transform: translateY(24px);
 }
 
-.about-teaser-btn svg {
+.about-fused-section.visible .about-fused-eyebrow,
+.about-fused-section.visible .about-fused-title,
+.about-fused-section.visible .about-fused-desc,
+.about-fused-section.visible .about-fused-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-fused-btn svg {
   width: 17px;
   height: 17px;
   transition: transform var(--transition-fast);
 }
 
-.about-teaser-btn:hover {
+.about-fused-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
 }
 
-.about-teaser-btn:hover svg {
+.about-fused-btn:hover svg {
   transform: translateX(4px);
 }
 
-/* ---- Image panel: curved swoop divider + 3D cursor tilt ---- */
-.about-teaser-image-wrap {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-  min-width: 0;
-  /* Same pill-curve technique already used for the About page's image blocks */
-  border-top-left-radius: 320px;
-  border-bottom-left-radius: 320px;
-  overflow: hidden;
-  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  transform: scale(0.96);
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
-    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
-  perspective: 1200px;
-}
-.about-teaser-section.visible .about-teaser-image-wrap { opacity: 1; transform: scale(1); }
-
-.about-teaser-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform-origin: center;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .about-teaser-image-wrap:hover .about-teaser-image {
-    transform: scale(1.08) perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+@media (max-width: 900px) {
+  .about-fused-overlay {
+    background: linear-gradient(
+      170deg,
+      var(--primary) 0%,
+      color-mix(in srgb, var(--primary) 92%, transparent) 32%,
+      color-mix(in srgb, var(--primary) 55%, transparent) 52%,
+      color-mix(in srgb, var(--primary) 15%, transparent) 70%,
+      transparent 88%
+    );
   }
+  .about-fused-content > * { max-width: 100%; }
 }
 
-@media (max-width: 1100px) {
-  .about-teaser-image-wrap { border-top-left-radius: 160px; border-bottom-left-radius: 160px; }
-  .about-teaser-text { padding: 64px 5% 64px 6%; }
-}
-
-@media (max-width: 768px) {
-  .about-teaser-section { flex-direction: column; min-height: 0; }
-  .about-teaser-section::after { height: 70px; }
-  .about-teaser-image-wrap {
-    order: -1;
-    height: 320px;
-    border-radius: 0;
-  }
-  .about-teaser-text {
-    padding: 48px 7%;
-    align-items: center;
-    text-align: center;
-  }
-  .about-teaser-desc { max-width: 100%; }
-  .about-teaser-btn { margin: 0 auto; }
+@media (max-width: 600px) {
+  .about-fused-section { min-height: 80vh; }
+  .about-fused-content { padding: 0 7%; }
+  .about-fused-section::after { height: 80px; }
 }

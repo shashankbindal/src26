@@ -1,8 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import RefinerySVG from './RefinerySVG.jsx';
 import './Banner.css';
 
 const CalendarIcon = () => (
@@ -86,15 +85,14 @@ const Banner = () => {
       <div className="hero-right">
         <div className="hero-image-wrap">
           <img
-            src="/latest.jpeg"
-            alt="RGIPT Campus — Rajiv Gandhi Institute of Petroleum Technology"
+            src="/hero-refinery.jpeg"
+            alt="Petroleum refinery at golden sunset"
             className="hero-campus-img"
             fetchpriority="high"
             decoding="async"
           />
           <div className="hero-image-fade" aria-hidden="true" />
         </div>
-        <RefinerySVG />
       </div>
     </section>
   );

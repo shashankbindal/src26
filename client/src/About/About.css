@@ -67,7 +67,7 @@
 .ref-text-content {
   flex: 1.5;
   padding: 0 6%;
-  max-width: 850px;
+  max-width: 600px;
 }
 
 /* ---- Subtitle row (line + scrambled label) ---- */
@@ -117,6 +117,7 @@
   opacity: 0; /* GSAP takes over on reveal */
 }
 
+.ref-desc { text-align: left; }
 .ref-desc strong { color: var(--text-primary); font-weight: 600; }
 
 /* ---- Description paragraphs — CSS stagger via nth-child delays ---- */

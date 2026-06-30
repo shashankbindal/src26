@@ -3,12 +3,12 @@
 /* ===== DARK THEME (default :root) ===== */
 :root,
 [data-theme="dark"] {
-  --bg-primary: #0F1319;
-  --bg-secondary: #171E27;
-  --bg-tertiary: #202A36;
-  --bg-elevated: #283443;
-  --bg-glass: rgba(15, 19, 25, 0.7);
-  --bg-dark: #0A0D12;
+  --bg-primary: #150E09;
+  --bg-secondary: #1E1510;
+  --bg-tertiary: #271C13;
+  --bg-elevated: #32221A;
+  --bg-glass: rgba(21, 14, 9, 0.8);
+  --bg-dark: #0D0905;
 
   --primary: #D4982A;
   --primary-dark: #B87E1E;
@@ -40,16 +40,16 @@
   --shadow-glow-intense: 0 0 40px rgba(212, 152, 42, 0.3), 0 0 120px rgba(212, 152, 42, 0.12);
 
   --spotlight-color: rgba(212, 152, 42, 0.08);
-  --nav-bg: rgba(15, 18, 20, 0.7);
-  --nav-bg-scrolled: rgba(10, 12, 14, 0.7);
+  --nav-bg: rgba(21, 14, 9, 0.82);
+  --nav-bg-scrolled: rgba(14, 10, 6, 0.92);
   --nav-border: rgba(255, 255, 255, 0.08);
-  --nav-border-scrolled: rgba(255, 255, 255, 0.15);
-  --nav-link-color: #e0e0e0;
-  --nav-icon-color: #ffffff;
-  --nav-user-bg: rgba(255, 255, 255, 0.08);
-  --nav-user-border: rgba(255, 255, 255, 0.15);
-  --nav-dropdown-bg: rgba(18, 18, 18, 0.95);
-  --nav-mobile-overlay: rgba(12, 15, 14, 0.97);
+  --nav-border-scrolled: rgba(255, 255, 255, 0.12);
+  --nav-link-color: #E8D8C4;
+  --nav-icon-color: #E8D8C4;
+  --nav-user-bg: rgba(255, 255, 255, 0.06);
+  --nav-user-border: rgba(255, 255, 255, 0.12);
+  --nav-dropdown-bg: rgba(30, 21, 14, 0.98);
+  --nav-mobile-overlay: rgba(21, 14, 9, 0.97);
   --logo-filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
   --logo-filter-hover: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
 
@@ -90,12 +90,12 @@
   --bg-glass: rgba(245, 234, 212, 0.88);
   --bg-dark: #D4C49E;
 
-  /* Primary — warm amber (dominant sunset action color for buttons/CTAs) */
-  --primary: #C8791A;
-  --primary-dark: #A46015;
-  --primary-light: #E09030;
-  --primary-glow: rgba(200, 121, 26, 0.18);
-  --primary-glow-strong: rgba(200, 121, 26, 0.35);
+  /* Primary — dark brown-amber (richer, more sophisticated than plain orange) */
+  --primary: #8B5A14;
+  --primary-dark: #6A4210;
+  --primary-light: #B07428;
+  --primary-glow: rgba(139, 90, 20, 0.20);
+  --primary-glow-strong: rgba(139, 90, 20, 0.38);
 
   /* Accent — muted steel blue (image's cool sky tones, for secondary accents) */
   --accent: #7A9DB8;
@@ -125,9 +125,9 @@
   --shadow-glow-intense: 0 0 40px rgba(200, 121, 26, 0.35), 0 0 120px rgba(200, 121, 26, 0.15);
 
   /* Component-specific tokens */
-  --spotlight-color: rgba(200, 121, 26, 0.06);
-  --nav-bg: rgba(245, 234, 212, 0.78);
-  --nav-bg-scrolled: rgba(238, 224, 194, 0.78);
+  --spotlight-color: rgba(139, 90, 20, 0.06);
+  --nav-bg: rgba(245, 234, 212, 0.82);
+  --nav-bg-scrolled: rgba(238, 224, 194, 0.82);
   --nav-border: rgba(43, 37, 32, 0.12);
   --nav-border-scrolled: rgba(43, 37, 32, 0.22);
   --nav-link-color: #2B2520;

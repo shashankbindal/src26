@@ -63,6 +63,7 @@
   --hover-glow-text: 0 0 30px rgba(62, 207, 107, 0.4);
   --panel-text: #14110A;
   --panel-text-muted: rgba(20, 17, 10, 0.65);
+  --watermark-stroke: rgba(255, 255, 255, 0.4);
 
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -148,6 +149,7 @@
   --hover-glow-text: 0 0 30px rgba(31, 92, 52, 0.35);
   --panel-text: #F3EDD8;
   --panel-text-muted: rgba(243, 237, 216, 0.7);
+  --watermark-stroke: rgba(20, 31, 16, 0.4);
 }
 
 *, *::before, *::after {

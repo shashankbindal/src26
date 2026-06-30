@@ -141,14 +141,17 @@
   font-weight: 700;
   text-align: center;
   line-height: 0.8;
-  color: transparent;
+  /* Solid fallback fill for browsers without text-stroke support (e.g. Firefox);
+     WebKit/Blink browsers override this to a transparent fill below, showing only the stroke. */
+  color: var(--watermark-stroke);
   margin-top: auto;
   user-select: none;
   z-index: 1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   padding-bottom: 20px;
-  -webkit-text-stroke: 1.5px var(--line-overlay);
+  -webkit-text-stroke: 2px var(--watermark-stroke);
+  -webkit-text-fill-color: transparent;
   transition: -webkit-text-stroke 0.3s ease;
 }
 

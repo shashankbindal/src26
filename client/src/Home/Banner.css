@@ -200,7 +200,7 @@
 /* ── RIGHT column ── */
 .hero-right {
   position: absolute;
-  left: 36%;
+  left: 38%;
   right: 0;
   top: 0;
   bottom: 0;
@@ -241,12 +241,12 @@
 }
 
 @media (max-width: 860px) {
-  /* Mobile: full-bleed image background, text overlaid with dark scrim */
+  /* Mobile: full-bleed image, hero sizes to content not forced 100svh */
   .hero-section {
-    height: 100svh;
-    min-height: 600px;
+    height: auto;
+    min-height: 0;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
   }
 
   /* Image covers the ENTIRE hero section on mobile */
@@ -259,31 +259,35 @@
     z-index: 0;
   }
 
-  /* Dark gradient scrim so text stays readable over the image */
+  /* Lighter scrim — enough contrast for text, image still visible */
   .hero-section::before {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      105deg,
-      rgba(13, 9, 5, 0.88) 0%,
-      rgba(13, 9, 5, 0.72) 50%,
-      rgba(13, 9, 5, 0.25) 100%
+      160deg,
+      rgba(13, 9, 5, 0.75) 0%,
+      rgba(13, 9, 5, 0.55) 55%,
+      rgba(13, 9, 5, 0.15) 100%
     );
     z-index: 1;
     pointer-events: none;
   }
 
-  /* Image fade: no left fade needed since whole bg is covered by scrim */
+  /* Image fade: not needed since scrim covers everything */
   .hero-image-fade { display: none; }
 
   .hero-left {
     position: relative;
     flex: none;
     width: 100%;
-    padding: 100px 7% 60px;
+    padding: 110px 7% 64px;
     z-index: 2;
     background: none;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   /* Text must be light on the dark scrim */

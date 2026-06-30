@@ -96,13 +96,21 @@
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  filter: grayscale(80%) brightness(0.7);
+  filter: grayscale(0%) brightness(1);
   transition: all 0.5s ease;
 }
 
-.member-card:hover .member-image {
-  filter: grayscale(0%) brightness(1);
-  transform: scale(1.04);
+/* Dim-until-hover reveal only makes sense on devices that can actually hover —
+   on touch, :hover never fires, so gating it here keeps photos full-color by default. */
+@media (hover: hover) and (pointer: fine) {
+  .member-image {
+    filter: grayscale(80%) brightness(0.7);
+  }
+
+  .member-card:hover .member-image {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.04);
+  }
 }
 
 .member-image-placeholder:not(:has(.member-image))::after {
